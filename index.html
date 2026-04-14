@@ -7,51 +7,61 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <style>
+    :root {
+      --navy: #1e2d3d;
+      --steel: #7a9bb5;
+    }
     body { font-family: system-ui, -apple-system, sans-serif; }
-    .hero-bg { background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%); }
-    .dark .hero-bg { background: linear-gradient(135deg, #1e2937 0%, #0f172a 100%); }
+    .hero-bg { background: linear-gradient(135deg, #1e2d3d 0%, #2a3f54 100%); }
+    a { color: inherit; }
+    .link-steel { color: var(--steel); }
+    .link-steel:hover { color: #5a84a2; text-decoration: underline; }
+    .btn-primary { background: #fff; color: #1e2d3d; }
+    .btn-primary:hover { background: #d6e4ef; }
+    .btn-outline { border: 2px solid #fff; color: #fff; }
+    .btn-outline:hover { background: rgba(255,255,255,0.12); }
+    .nav-link { color: #374151; }
+    .nav-link:hover { color: var(--steel); }
+    .section-bg { background: #e8f1f7; }
+    .card { background: #fff; border: 1px solid #ccdcea; border-radius: 1.25rem; padding: 2rem; }
+    .section-divider { border: none; border-top: 2px solid #1e2d3d; margin: 0; }
   </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+<body class="bg-white text-slate-900">
 
   <!-- NAVBAR -->
-  <nav class="bg-white dark:bg-slate-900 shadow-sm sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800">
+  <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-200">
     <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
-      <div class="text-2xl font-semibold text-indigo-600 dark:text-indigo-400">Joe Rossano</div>
+      <div class="text-2xl font-semibold" style="color:#1e2d3d">Joe Rossano</div>
 
       <!-- Desktop Menu -->
       <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-        <a href="#about" class="hover:text-indigo-600 dark:hover:text-indigo-400">About</a>
-        <a href="#experience" class="hover:text-indigo-600 dark:hover:text-indigo-400">Experience</a>
-        <a href="#projects" class="hover:text-indigo-600 dark:hover:text-indigo-400">Projects</a>
-        <a href="#testimonials" class="hover:text-indigo-600 dark:hover:text-indigo-400">Testimonials</a>
-        <a href="#blog" class="hover:text-indigo-600 dark:hover:text-indigo-400">Blog</a>
-        <a href="#contact" class="hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a>
+        <a href="#about" class="nav-link transition">About</a>
+        <a href="#experience" class="nav-link transition">Experience</a>
+        <a href="#projects" class="nav-link transition">Projects</a>
+        <a href="#testimonials" class="nav-link transition">Testimonials</a>
+        <a href="#blog" class="nav-link transition">Blog</a>
+        <a href="#contact" class="nav-link transition">Contact</a>
       </div>
 
       <div class="flex items-center gap-4">
-        <!-- Dark Mode Toggle -->
-        <button onclick="toggleDarkMode()" class="text-xl hover:text-indigo-600 dark:hover:text-indigo-400 transition">
-          <i id="theme-icon" class="fa-solid fa-moon"></i>
-        </button>
-
         <!-- Hamburger -->
         <button onclick="toggleMobileMenu()" id="hamburger-btn"
-                class="md:hidden text-3xl hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+                class="md:hidden text-3xl nav-link transition">
           <i id="hamburger-icon" class="fa-solid fa-bars"></i>
         </button>
       </div>
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-6 py-4">
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200 px-6 py-4">
       <div class="flex flex-col gap-6 text-base font-medium">
-        <a href="#about" onclick="toggleMobileMenu()" class="hover:text-indigo-600 dark:hover:text-indigo-400">About</a>
-        <a href="#experience" onclick="toggleMobileMenu()" class="hover:text-indigo-600 dark:hover:text-indigo-400">Experience</a>
-        <a href="#projects" onclick="toggleMobileMenu()" class="hover:text-indigo-600 dark:hover:text-indigo-400">Projects</a>
-        <a href="#testimonials" onclick="toggleMobileMenu()" class="hover:text-indigo-600 dark:hover:text-indigo-400">Testimonials</a>
-        <a href="#blog" onclick="toggleMobileMenu()" class="hover:text-indigo-600 dark:hover:text-indigo-400">Blog</a>
-        <a href="#contact" onclick="toggleMobileMenu()" class="hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a>
+        <a href="#about" onclick="toggleMobileMenu()" class="nav-link">About</a>
+        <a href="#experience" onclick="toggleMobileMenu()" class="nav-link">Experience</a>
+        <a href="#projects" onclick="toggleMobileMenu()" class="nav-link">Projects</a>
+        <a href="#testimonials" onclick="toggleMobileMenu()" class="nav-link">Testimonials</a>
+        <a href="#blog" onclick="toggleMobileMenu()" class="nav-link">Blog</a>
+        <a href="#contact" onclick="toggleMobileMenu()" class="nav-link">Contact</a>
       </div>
     </div>
   </nav>
@@ -60,47 +70,53 @@
   <header class="hero-bg text-white py-24">
     <div class="max-w-6xl mx-auto px-6 text-center">
       <h1 class="text-6xl font-bold mb-4">Joe Rossano</h1>
-      <p class="text-3xl mb-6">Senior iOS Engineer • Lead Mobile Developer</p>
+      <p class="text-3xl mb-6" style="color:#b8d0e4">Senior iOS Engineer • Lead Mobile Developer</p>
       <div class="inline-flex items-center gap-2 bg-white/10 text-white text-lg px-6 py-3 rounded-3xl mb-8">
         <i class="fa-solid fa-plane"></i>
         <span>Relocating to Italy in 2026 • Open to fully remote US roles (Digital Nomad Visa ready)</span>
       </div>
-      <p class="max-w-2xl mx-auto text-xl mb-10">
+      <p class="max-w-2xl mx-auto text-xl mb-10" style="color:#d6e8f4">
         25+ years building enterprise iOS apps. Currently leading Pay In Four & Springfield Payments at JPMorgan Chase (tens of millions of users).
       </p>
       <div class="flex justify-center gap-4 flex-wrap">
-        <a href="https://www.linkedin.com/in/jrossano/" target="_blank" 
-           class="bg-white text-slate-900 px-8 py-4 rounded-2xl font-semibold hover:bg-indigo-100 transition flex items-center">
+        <a href="https://www.linkedin.com/in/jrossano/" target="_blank"
+           class="btn-primary px-8 py-4 rounded-2xl font-semibold transition flex items-center">
           <i class="fa-brands fa-linkedin mr-2"></i> LinkedIn
         </a>
-        <a href="https://joe-rossano.github.io/resume.pdf" target="_blank" 
-           class="border border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 transition flex items-center">
+        <a href="https://jrossano.github.io/resume.pdf" target="_blank"
+           class="btn-outline px-8 py-4 rounded-2xl font-semibold transition flex items-center">
           <i class="fa-solid fa-download mr-2"></i> Download Resume
         </a>
       </div>
     </div>
   </header>
 
+  <hr class="section-divider">
+
   <!-- ABOUT -->
-  <section id="about" class="max-w-6xl mx-auto px-6 py-20">
-    <h2 class="text-4xl font-semibold mb-8">About Me</h2>
-    <div class="prose prose-lg dark:prose-invert max-w-none">
-      <p>Senior iOS Engineer with 25+ years of software development experience and 13+ years building native iOS applications at enterprise scale. Expert in modern Swift architecture (Swift 6 strict concurrency, SwiftUI, async/await) and AI-augmented development using Claude Code, GitHub Copilot, and Windsurf AI within VSCode and Xcode Agentic Coding environments.</p>
-      <p>Recognized for exceptional test coverage (98%+), accessibility excellence, release leadership, and mentoring junior engineers. Currently driving high-impact fintech features at JPMorgan Chase used by tens of millions of customers.</p>
+  <section id="about" class="section-bg py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-semibold mb-8" style="color:#1e2d3d">About Me</h2>
+      <div class="card text-slate-700 space-y-4 text-lg leading-relaxed">
+        <p>Senior iOS Engineer with 25+ years of software development experience and 13+ years building native iOS applications at enterprise scale. Expert in modern Swift architecture (Swift 6 strict concurrency, SwiftUI, async/await) and AI-augmented development using Claude Code, GitHub Copilot, and Windsurf AI within VSCode and Xcode Agentic Coding environments.</p>
+        <p>Recognized for exceptional test coverage (98%+), accessibility excellence, release leadership, and mentoring junior engineers. Currently driving high-impact fintech features at JPMorgan Chase used by tens of millions of customers.</p>
+      </div>
     </div>
   </section>
 
+  <hr class="section-divider">
+
   <!-- EXPERIENCE -->
-  <section id="experience" class="bg-white dark:bg-slate-900 py-20 border-t border-b border-slate-200 dark:border-slate-800">
+  <section id="experience" class="section-bg py-20">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-semibold mb-12">Experience</h2>
-      <div class="space-y-16">
-        <div>
-          <div class="flex justify-between items-baseline mb-4">
-            <h3 class="text-2xl font-semibold">Lead Software Engineer – iOS</h3>
-            <p class="text-slate-500 dark:text-slate-400">JPMorgan Chase & Co. • 2022 – Present</p>
+      <h2 class="text-4xl font-semibold mb-8" style="color:#1e2d3d">Experience</h2>
+      <div class="space-y-6">
+        <div class="card">
+          <div class="flex justify-between items-baseline mb-4 flex-wrap gap-2">
+            <h3 class="text-2xl font-semibold" style="color:#1e2d3d">Lead Software Engineer – iOS</h3>
+            <p class="text-slate-500">JPMorgan Chase & Co. • 2022 – Present</p>
           </div>
-          <ul class="list-disc pl-6 space-y-3 text-slate-700 dark:text-slate-300">
+          <ul class="list-disc pl-6 space-y-3 text-slate-700">
             <li>Key contributor to Pay In Four and Springfield Payments features used by tens of millions of customers (94+ NPS, zero major incidents)</li>
             <li>Led full Swift 6 migration with strict concurrency, actor isolation, and async/await</li>
             <li>Increased unit test coverage to 98.3% • Authored 48+ automated deeplink tests + Sage UI/ServerMock + API contract testing</li>
@@ -109,140 +125,151 @@
           </ul>
         </div>
 
-        <div>
-          <div class="flex justify-between items-baseline mb-4">
-            <h3 class="text-2xl font-semibold">Senior iOS Developer</h3>
-            <p class="text-slate-500 dark:text-slate-400">E-gineering (Consulting) • 2012 – 2022</p>
+        <div class="card">
+          <div class="flex justify-between items-baseline mb-4 flex-wrap gap-2">
+            <h3 class="text-2xl font-semibold" style="color:#1e2d3d">Senior iOS Developer</h3>
+            <p class="text-slate-500">E-gineering (Consulting) • 2012 – 2022</p>
           </div>
-          <ul class="list-disc pl-6 space-y-3 text-slate-700 dark:text-slate-300">
+          <ul class="list-disc pl-6 space-y-3 text-slate-700">
             <li>Designed and developed 10+ native iOS apps for medical device integration, including reusable CoreBluetooth/BLE frameworks for Eli Lilly blood glucose monitors and insulin injectors (92% unit test coverage)</li>
             <li>Built NeuroNode Controller (wearable EMG assistive device), Puck universal remote, Filter Monitor, and multiple compliance/testing apps</li>
-            <li>Delivered pixel-perfect, accessible interfaces with real-time data visualization, custom hardware protocols, and JSON Web Token authentication</li>
+            <li>Clients included Eli Lilly, Control Bionics, Cummins Filtration, TriMedx, and SmashToast</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="flex justify-between items-baseline mb-4 flex-wrap gap-2">
+            <h3 class="text-2xl font-semibold" style="color:#1e2d3d">Earlier Career (Pre-iOS)</h3>
+            <p class="text-slate-500">Various • 1998 – 2012</p>
+          </div>
+          <ul class="list-disc pl-6 space-y-3 text-slate-700">
+            <li>14 years of software engineering across web, enterprise, and systems development before transitioning fully to iOS in 2012</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
+  <hr class="section-divider">
+
   <!-- PROJECTS -->
-  <section id="projects" class="py-20">
+  <section id="projects" class="section-bg py-20">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-semibold mb-12">Featured Projects</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
-          <h3 class="font-semibold text-2xl mb-2">Pay In Four & Springfield Payments</h3>
-          <p class="text-slate-600 dark:text-slate-400">Chase Mobile App • JPMorgan Chase</p>
-          <p class="mt-4 text-slate-700 dark:text-slate-300">High-visibility consumer banking features used by tens of millions of customers. Full SwiftUI implementation, Swift 6 migration, comprehensive test automation, and ADA compliance.</p>
+      <h2 class="text-4xl font-semibold mb-8" style="color:#1e2d3d">Projects</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="card">
+          <h3 class="font-semibold text-xl mb-1" style="color:#1e2d3d">Pay In Four & Springfield Payments</h3>
+          <p style="color:#7a9bb5" class="font-medium text-sm mb-3">Chase Mobile App • JPMorgan Chase</p>
+          <p class="text-slate-700">High-visibility consumer banking features used by tens of millions of customers. Full SwiftUI implementation, Swift 6 migration, comprehensive test automation, and ADA compliance.</p>
         </div>
-        <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
-          <h3 class="font-semibold text-2xl mb-2">Eli Lilly BLE Medical Device Frameworks</h3>
-          <p class="text-slate-600 dark:text-slate-400">Reusable CoreBluetooth libraries</p>
-          <p class="mt-4 text-slate-700 dark:text-slate-300">Blood glucose monitors and insulin injectors. 92% unit test coverage using CoreBluetoothMock.</p>
+        <div class="card">
+          <h3 class="font-semibold text-xl mb-1" style="color:#1e2d3d">Eli Lilly BLE Medical Device Frameworks</h3>
+          <p style="color:#7a9bb5" class="font-medium text-sm mb-3">Reusable CoreBluetooth libraries</p>
+          <p class="text-slate-700">Blood glucose monitors and insulin injectors. 92% unit test coverage using CoreBluetoothMock.</p>
         </div>
-        <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
-          <h3 class="font-semibold text-2xl mb-2">NeuroNode Controller</h3>
-          <p class="text-slate-600 dark:text-slate-400">Control Bionics</p>
-          <p class="mt-4 text-slate-700 dark:text-slate-300">World’s first wearable EMG assistive communications device for iOS. Real-time signal graphing and bioelectrical control using Core Bluetooth.</p>
+        <div class="card">
+          <h3 class="font-semibold text-xl mb-1" style="color:#1e2d3d">NeuroNode Controller</h3>
+          <p style="color:#7a9bb5" class="font-medium text-sm mb-3">Control Bionics</p>
+          <p class="text-slate-700">World's first wearable EMG assistive communications device for iOS. Real-time signal graphing and bioelectrical control using Core Bluetooth.</p>
         </div>
-        <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
-          <h3 class="font-semibold text-2xl mb-2">Puck Universal Remote</h3>
-          <p class="text-slate-600 dark:text-slate-400">SmashToast</p>
-          <p class="mt-4 text-slate-700 dark:text-slate-300">Consolidates remotes using BLE to overcome IR limitations. Closure-based hardware API and JSON Web Token authentication.</p>
+        <div class="card">
+          <h3 class="font-semibold text-xl mb-1" style="color:#1e2d3d">Puck Universal Remote</h3>
+          <p style="color:#7a9bb5" class="font-medium text-sm mb-3">SmashToast</p>
+          <p class="text-slate-700">Consolidates remotes using BLE to overcome IR limitations. Closure-based hardware API and JSON Web Token authentication.</p>
         </div>
-        <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
-          <h3 class="font-semibold text-2xl mb-2">Filter Monitor</h3>
-          <p class="text-slate-600 dark:text-slate-400">Cummins Filtration</p>
-          <p class="mt-4 text-slate-700 dark:text-slate-300">Commercial diesel engine filter monitoring app with custom BLE protocol and animated gauges.</p>
+        <div class="card">
+          <h3 class="font-semibold text-xl mb-1" style="color:#1e2d3d">Filter Monitor</h3>
+          <p style="color:#7a9bb5" class="font-medium text-sm mb-3">Cummins Filtration</p>
+          <p class="text-slate-700">Commercial diesel engine filter monitoring app with custom BLE protocol and animated gauges.</p>
         </div>
       </div>
     </div>
   </section>
+
+  <hr class="section-divider">
 
   <!-- TESTIMONIALS -->
-  <section id="testimonials" class="bg-white dark:bg-slate-900 py-20 border-t border-b border-slate-200 dark:border-slate-800">
+  <section id="testimonials" class="section-bg py-20">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-semibold mb-12">Testimonials</h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-3xl">
-          <p class="italic">"Joe is a first class iOS engineer in every sense of the word... I would personally recommend Joe to anyone looking for a highly talented iOS software engineer."</p>
-          <p class="mt-6 font-semibold">— Patrick Lind, Associate Director at Eli Lilly and Company</p>
+      <h2 class="text-4xl font-semibold mb-8" style="color:#1e2d3d">Testimonials</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="card">
+          <p class="italic text-slate-700">"Joe is a first class iOS engineer in every sense of the word... I would personally recommend Joe to anyone looking for a highly talented iOS software engineer."</p>
+          <p class="mt-6 font-semibold" style="color:#1e2d3d">— Patrick Lind, Associate Director at Eli Lilly and Company</p>
         </div>
-        <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-3xl">
-          <p class="italic">"He made my life easy. His combination of technical prowess and superb human interaction skills is nearly impossible to find. I would enthusiastically recommend Mr. Joe Rossano on your next project."</p>
-          <p class="mt-6 font-semibold">— James Schorey, CTO at Control Bionics</p>
+        <div class="card">
+          <p class="italic text-slate-700">"He made my life easy. His combination of technical prowess and superb human interaction skills is nearly impossible to find. I would enthusiastically recommend Mr. Joe Rossano on your next project."</p>
+          <p class="mt-6 font-semibold" style="color:#1e2d3d">— James Schorey, CTO at Control Bionics</p>
         </div>
-        <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-3xl">
-          <p class="italic">"10 out of 10. I highly recommend working with Joe if given the opportunity."</p>
-          <p class="mt-6 font-semibold">— Barnabas Helmy, CEO and Founder at SmashToast, Inc</p>
+        <div class="card">
+          <p class="italic text-slate-700">"10 out of 10. I highly recommend working with Joe if given the opportunity."</p>
+          <p class="mt-6 font-semibold" style="color:#1e2d3d">— Barnabas Helmy, CEO and Founder at SmashToast, Inc</p>
         </div>
-        <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-3xl">
-          <p class="italic">"Joe has an excellent ability to design apps that are both functional and intuitive... I would recommend Joe for all of your iOS app development needs."</p>
-          <p class="mt-6 font-semibold">— Dax Hafer, Design Engineer at TriMedx</p>
+        <div class="card">
+          <p class="italic text-slate-700">"Joe has an excellent ability to design apps that are both functional and intuitive... I would recommend Joe for all of your iOS app development needs."</p>
+          <p class="mt-6 font-semibold" style="color:#1e2d3d">— Dax Hafer, Design Engineer at TriMedx</p>
         </div>
-        <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-3xl">
-          <p class="italic">"I would highly recommend Joe for any iOS development projects. Joe is easy to communicate with, works to understand his customers’ needs and always communicates the progress of the project."</p>
-          <p class="mt-6 font-semibold">— Rob Cadick, Lead Design Engineer at TriMedx</p>
+        <div class="card">
+          <p class="italic text-slate-700">"I would highly recommend Joe for any iOS development projects. Joe is easy to communicate with, works to understand his customers' needs and always communicates the progress of the project."</p>
+          <p class="mt-6 font-semibold" style="color:#1e2d3d">— Rob Cadick, Lead Design Engineer at TriMedx</p>
         </div>
-        <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-3xl">
-          <p class="italic">"I would definitely recommend Joe Rossano."</p>
-          <p class="mt-6 font-semibold">— Brian Van Pelt, Software Engineer at E-gineering</p>
+        <div class="card">
+          <p class="italic text-slate-700">"I would definitely recommend Joe Rossano."</p>
+          <p class="mt-6 font-semibold" style="color:#1e2d3d">— Brian Van Pelt, Software Engineer at E-gineering</p>
         </div>
       </div>
     </div>
   </section>
+
+  <hr class="section-divider">
 
   <!-- BLOG -->
-  <section id="blog" class="py-20">
+  <section id="blog" class="section-bg py-20">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-semibold mb-12">Latest Blog Posts</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
-          <h3 class="font-semibold text-xl mb-3">Swift Essentials – A 6-Part Series for New iOS Developers</h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Internal documentation turned public blog post</p>
-          <a href="http://joe-rossano.weebly.com/blog" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center">Read on Weebly →</a>
+      <h2 class="text-4xl font-semibold mb-8" style="color:#1e2d3d">Latest Blog Posts</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card">
+          <h3 class="font-semibold text-xl mb-3" style="color:#1e2d3d">Swift Essentials – A 6-Part Series for New iOS Developers</h3>
+          <p class="text-slate-500 text-sm mb-4">Internal documentation turned public blog post</p>
+          <a href="http://joe-rossano.weebly.com/blog" target="_blank" class="link-steel font-medium flex items-center">Read on Weebly →</a>
         </div>
-        <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
-          <h3 class="font-semibold text-xl mb-3">Mastering Async/Await and Structured Concurrency in Swift</h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Practical patterns used at JPMC</p>
-          <a href="http://joe-rossano.weebly.com/blog" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center">Read on Weebly →</a>
+        <div class="card">
+          <h3 class="font-semibold text-xl mb-3" style="color:#1e2d3d">Mastering Async/Await and Structured Concurrency in Swift</h3>
+          <p class="text-slate-500 text-sm mb-4">Practical patterns used at JPMC</p>
+          <a href="http://joe-rossano.weebly.com/blog" target="_blank" class="link-steel font-medium flex items-center">Read on Weebly →</a>
         </div>
-        <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
-          <h3 class="font-semibold text-xl mb-3">AI-Assisted iOS Development with Claude Code & Copilot</h3>
-          <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">How I ship faster while maintaining 98%+ test coverage</p>
-          <a href="http://joe-rossano.weebly.com/blog" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center">Read on Weebly →</a>
+        <div class="card">
+          <h3 class="font-semibold text-xl mb-3" style="color:#1e2d3d">AI-Assisted iOS Development with Claude Code & Copilot</h3>
+          <p class="text-slate-500 text-sm mb-4">How I ship faster while maintaining 98%+ test coverage</p>
+          <a href="http://joe-rossano.weebly.com/blog" target="_blank" class="link-steel font-medium flex items-center">Read on Weebly →</a>
         </div>
       </div>
     </div>
   </section>
 
+  <hr class="section-divider">
+
   <!-- CONTACT -->
-  <section id="contact" class="py-20 bg-slate-900 dark:bg-black text-white">
+  <section id="contact" class="py-20 text-white" style="background:#1e2d3d">
     <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-4xl font-semibold mb-6">Let’s Connect</h2>
-      <p class="text-xl mb-8">joe@rossano.net • +1 317-460-6787</p>
-      <a href="https://www.linkedin.com/in/jrossano/" target="_blank" class="inline-flex items-center gap-3 bg-white text-slate-900 px-10 py-5 rounded-3xl text-xl font-medium">
-        <i class="fa-brands fa-linkedin text-3xl"></i> Message me on LinkedIn
+      <h2 class="text-4xl font-semibold mb-6">Let's Connect</h2>
+      <p class="text-xl mb-8" style="color:#b8d0e4">
+        <a href="mailto:joe@rossano.net" style="color:#b8d0e4">joe@rossano.net</a> • +1 317-460-6787
+      </p>
+      <a href="https://www.linkedin.com/in/jrossano/" target="_blank"
+         class="inline-flex items-center gap-3 bg-white px-10 py-5 rounded-3xl text-xl font-medium transition hover:bg-blue-50" style="color:#1e2d3d">
+        <i class="fa-brands fa-linkedin text-3xl" style="color:#7a9bb5"></i> Message me on LinkedIn
       </a>
     </div>
   </section>
 
-  <footer class="bg-slate-950 text-slate-400 py-10 text-center text-sm">
+  <hr class="section-divider">
+
+  <footer style="background:#152230" class="text-slate-400 py-10 text-center text-sm">
     <p>© 2026 Joe Rossano • Open to fully remote US opportunities while relocating to Italy under the Digital Nomad / Remote Worker Visa</p>
   </footer>
 
   <script>
-    // Dark mode toggle
-    function toggleDarkMode() {
-      document.documentElement.classList.toggle('dark');
-      const icon = document.getElementById('theme-icon');
-      if (document.documentElement.classList.contains('dark')) {
-        icon.classList.replace('fa-moon', 'fa-sun');
-      } else {
-        icon.classList.replace('fa-sun', 'fa-moon');
-      }
-    }
-
-    // Mobile hamburger menu
     function toggleMobileMenu() {
       const menu = document.getElementById('mobile-menu');
       const icon = document.getElementById('hamburger-icon');
