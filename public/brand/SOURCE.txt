@@ -1,0 +1,6 @@
+Preferred mark: public/brand/jr-logo-app-icon-transparent.png
+1024px cleaned app icon, copied unchanged (1024x1024 RGBA).
+The nav uses that file directly.
+public/brand/logo.png, favicon-32.png, favicon-16.png, app/icon.png,
+and app/apple-icon.png are Lanczos resizes of it. Transparency is kept.
+Original JPEG copied unchanged to public/brand/jr-logo.jpg.

@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+/*
+  Joe Rossano brand tokens.
+  Slate #94A3B8 is exposed as `ash` so it does not replace Tailwind's slate scale.
+  Royal Blue #1F4FE0 on Midnight #0A0F1F is 2.95:1, below WCAG AA for text,
+  so text links use Electric Sky #00A8FF (7.31:1 on Midnight, 6.29:1 on Deep Navy).
+  Primary buttons use Royal Blue fills with Cloud #F4F7FC labels (6.01:1).
+  Slate/ash on Midnight is 7.44:1 and on Deep Navy is 6.40:1.
+*/
+@theme inline {
+  --color-midnight: #0a0f1f;
+  --color-navy: #0e1a4f;
+  --color-royal: #1f4fe0;
+  --color-sky: #00a8ff;
+  --color-cloud: #f4f7fc;
+  --color-ash: #94a3b8;
+  --color-amber: #ffb547;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background: #0a0f1f;
+  color: #f4f7fc;
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: #1f4fe0;
+  color: #f4f7fc;
+}
+
+:focus-visible {
+  outline: 2px solid #00a8ff;
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 80;
+  transform: translateY(-160%);
+  border-radius: 0.5rem;
+  background: #1f4fe0;
+  color: #f4f7fc;
+  padding: 0.6rem 0.9rem;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(0, 168, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 168, 255, 0.08) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+.panel {
+  background: #0e1a4f;
+  border: 1px solid rgba(244, 247, 252, 0.12);
+  border-radius: 1.5rem;
+}
+
+.word-in {
+  display: inline-block;
+  margin-right: 0.28em;
+  animation: word-in 0.55s ease forwards;
+  opacity: 0;
+}
+
+@keyframes word-in {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes marquee-y {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+.marquee-y {
+  animation: marquee-y 28s linear infinite;
+}
+
+.marquee-y-reverse {
+  animation: marquee-y 34s linear infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .word-in {
+    opacity: 1;
+    filter: none;
+  }
+}
