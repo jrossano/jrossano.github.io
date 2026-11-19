@@ -309,8 +309,6 @@ export type BlogPost = {
   date: string;
   iso: string;
   summary: string;
-  /** Current Weebly permalink. TODO: replace if the essay moves off Weebly. */
-  url: string;
 };
 
 export const posts: BlogPost[] = [
@@ -320,7 +318,6 @@ export const posts: BlogPost[] = [
     date: "October 26, 2022",
     iso: "2022-10-26",
     summary: "In this blog post I show you how to update your app's asynchronous APIs to use async/await.",
-    url: "https://joe-rossano.weebly.com/blog/swift-asynchronous-functions",
   },
   {
     id: "swift-essentials-generics",
@@ -328,7 +325,6 @@ export const posts: BlogPost[] = [
     date: "February 10, 2020",
     iso: "2020-02-10",
     summary: "The fifth and final post in my Swift Essentials blog series explores Swift generics.",
-    url: "https://joe-rossano.weebly.com/blog/swift-essentials-generics",
   },
   {
     id: "swift-essentials-protocols",
@@ -336,7 +332,6 @@ export const posts: BlogPost[] = [
     date: "July 31, 2019",
     iso: "2019-07-31",
     summary: "The fourth post in my Swift Essentials blog series discusses Swift protocols.",
-    url: "https://joe-rossano.weebly.com/blog/swift-essentials-protocols7539946",
   },
   {
     id: "swift-essentials-extensions",
@@ -344,7 +339,6 @@ export const posts: BlogPost[] = [
     date: "April 23, 2018",
     iso: "2018-04-23",
     summary: "The third post in my Swift Essentials blog series deals with Swift extensions.",
-    url: "https://joe-rossano.weebly.com/blog/swift-essentials-extensions-eg",
   },
   {
     id: "swift-essentials-closures",
@@ -352,7 +346,6 @@ export const posts: BlogPost[] = [
     date: "November 13, 2017",
     iso: "2017-11-13",
     summary: "The second post in my Swift Essentials blog series covers Swift closures.",
-    url: "https://joe-rossano.weebly.com/blog/swift-essentials-closures-eg",
   },
   {
     id: "swift-essentials-optionals",
@@ -360,7 +353,6 @@ export const posts: BlogPost[] = [
     date: "March 14, 2017",
     iso: "2017-03-14",
     summary: "The first post in my Swift Essentials blog series introduces Swift optionals.",
-    url: "https://joe-rossano.weebly.com/blog/swift-essentials-optionals-eg",
   },
 ];
 
