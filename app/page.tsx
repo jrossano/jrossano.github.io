@@ -25,10 +25,10 @@ export default function HomePage() {
           Swift
         </SectionHeading>
         <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-ash sm:text-base">
-          Six essays from the current site, including the Swift Essentials series. They still live on Weebly.
+          Six essays, including the Swift Essentials series, from optionals through async/await.
         </p>
         <div className="mx-auto mt-10 max-w-3xl">
-          <BlogList compact />
+          <BlogList />
         </div>
         <p className="mt-6 text-center">
           <Link href="/blog/" className="text-sm font-medium text-sky hover:underline">

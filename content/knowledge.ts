@@ -184,10 +184,16 @@ export const knowledge: KnowledgeEntry[] = [
     id: "blog",
     title: "Blog",
     keywords: ["blog", "post", "essay", "generics", "protocols", "extensions", "closures", "optionals", "async/await", "async await", "swift essentials"],
-    answer: `Six posts are listed, still hosted on the Weebly blog. ${posts
-      .map((post) => `${post.title} (${post.date}): ${post.summary} ${post.url}`)
-      .join(" ")} TODO: replace those URLs if the essays move off Weebly.`,
+    answer: `Six posts are published on this site. ${posts
+      .map((post) => `${post.title} (${post.date}): ${post.summary}`)
+      .join(" ")}`,
   },
+  ...posts.map((post) => ({
+    id: `post-${post.id}`,
+    title: post.title,
+    keywords: [post.title.toLowerCase().replace(":", ""), post.id.replace(/-/g, " ")],
+    answer: `${post.title} (${post.date}): ${post.summary}`,
+  })),
   {
     id: "apps",
     title: "Apps",

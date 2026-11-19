@@ -13,7 +13,7 @@ export default function BlogPage() {
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-sky">Blog</p>
         <h1 className="mt-3 text-4xl font-bold tracking-tight text-cloud md:text-5xl">Swift notes</h1>
         <p className="mt-4 text-sm leading-relaxed text-ash sm:text-base">
-          Six posts from the current site. Swift Essentials runs from optionals through generics, and a later post covers async/await.
+          Six posts. Swift Essentials runs from optionals through generics, and a later post covers async/await.
         </p>
         <div className="mt-8">
           <BlogList />

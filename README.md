@@ -93,7 +93,7 @@ The browser calls it directly, so the endpoint needs CORS for the site origin. N
 
 ## Still open
 
-1. **Blog URLs.** Posts still link to the live Weebly permalinks. Replace `url` in `content/site.ts` if the essays move.
+1. **Blog posts.** The six essays live in `content/blog/` and render at `/blog/<slug>/`. Dates are the original publication dates, not the 2025 Wix republish dates.
 2. **How you use AI.** The first-person line is only "I use GitHub Copilot in VS Code and Claude Opus in Xcode." Rewrite it when you want a fuller note. The competency cards stay as published.
 3. **Apps with no resume client.** Dashboard, iRate for iMessage, Flappy Creeper, and Agile Roadmap are on the Weebly page only. Portfolio and IRIS are on the resume and were not in that gallery, so they have no screenshots.
 4. **FairDose** is in development at [fairdose.app](https://fairdose.app). There is no App Store link because it is not released.
@@ -105,6 +105,6 @@ Contact is LinkedIn only. The resume phone number and email are not on the site.
 - `/` Home
 - `/about/` Every resume role, competencies, the four additional published recommendations, certifications and education
 - `/apps/` The Weebly case studies, plus Portfolio and IRIS from the resume
-- `/blog/` Six posts
+- `/blog/` Six posts, each with its own page under `/blog/<slug>/`
 
 Featured recommendations on the home page are Hogan Lee (JPMorganChase), Patrick Lind (Eli Lilly), and James Schorey (Control Bionics). Barnabas Helmy, Dax Hafer, Rob Cadick, and Brian Van Pelt remain on About because they are on the current site.

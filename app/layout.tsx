@@ -20,6 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://jrossano.github.io"),
   title: {
     default: "Joe Rossano · Lead Software Engineer",
     template: "%s · Joe Rossano",
