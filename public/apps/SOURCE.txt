@@ -1,0 +1,3 @@
+Screenshots are the public gallery images from https://joe-rossano.weebly.com/apps.html,
+matched to each case study by its position on that page, then resized to WebP (max edge 1100px).
+Original files are under https://joe-rossano.weebly.com/uploads/1/3/1/4/13144468/.
