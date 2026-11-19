@@ -1,38 +1,13 @@
 import type { ReactNode } from "react";
-import { highlightSwift, type TokenKind } from "@/lib/highlight";
 
 type Block =
   | { type: "h2" | "h3"; text: string }
   | { type: "p"; text: string }
   | { type: "ul"; items: string[] }
-  | { type: "code"; code: string }
   | { type: "image"; alt: string; src: string };
-
-const tokenClass: Record<TokenKind, string> = {
-  plain: "text-cloud",
-  comment: "text-ash",
-  string: "text-amber",
-  keyword: "text-sky",
-  number: "text-[#d7b4ff]",
-  type: "text-[#9ecbff]",
-};
 
 function parseMarkdown(source: string): Block[] {
   const blocks: Block[] = [];
-  const pattern = /```(\w*)\n([\s\S]*?)```/g;
-  let cursor = 0;
-  let match: RegExpExecArray | null;
-
-  while ((match = pattern.exec(source))) {
-    pushText(blocks, source.slice(cursor, match.index));
-    blocks.push({ type: "code", code: match[2].replace(/\n$/, "") });
-    cursor = match.index + match[0].length;
-  }
-  pushText(blocks, source.slice(cursor));
-  return blocks;
-}
-
-function pushText(blocks: Block[], source: string) {
   const lines = source.split("\n");
   let index = 0;
 
@@ -82,6 +57,8 @@ function pushText(blocks: Block[], source: string) {
     }
     blocks.push({ type: "p", text: paragraph.join(" ") });
   }
+
+  return blocks;
 }
 
 function isSpecial(line: string): boolean {
@@ -149,30 +126,19 @@ export function MarkdownPost({ source }: { source: string }) {
             </ul>
           );
         }
-        if (block.type === "code") {
-          const tokens = highlightSwift(block.code);
-          return (
-            <pre
-              key={index}
-              className="overflow-x-auto rounded-2xl border border-cloud/15 bg-[#070d1c] p-4 text-[13px] leading-6 sm:text-sm"
-            >
-              <code className="font-mono">
-                {tokens.map((token, tokenIndex) => (
-                  <span key={tokenIndex} className={tokenClass[token.kind]}>
-                    {token.text}
-                  </span>
-                ))}
-              </code>
-            </pre>
-          );
-        }
         if (block.type === "image") {
           figure += 1;
           return (
-            <figure key={index} className="overflow-hidden rounded-2xl border border-cloud/15 bg-navy">
-              {/* The Wix posts store each sample as an Xcode screenshot. */}
+            <figure
+              key={index}
+              className="-mx-4 w-[calc(100%+2rem)] overflow-hidden bg-navy sm:mx-0 sm:w-full sm:rounded-2xl sm:border sm:border-cloud/15"
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={block.src} alt={block.alt || `Code sample screenshot ${figure}`} className="h-auto w-full" />
+              <img
+                src={block.src}
+                alt={block.alt || `Code sample screenshot ${figure}`}
+                className="h-auto w-full"
+              />
             </figure>
           );
         }

@@ -8,18 +8,6 @@ Core Bluetooth is Apple's native Objective-C framework for writing iOS apps whic
 
 The CBCentralManagerDelegate protocol defines methods which provide updates for the discovery and management of peripheral devices. For example, it contains a callback method to tell the delegate that the central manager connected to a peripheral. The centralManager:didConnectPeripheral: method defined in the header below is invoked by the CBCentralManager when a connection initiated by a call to connectPeripheral:options: has succeeded.
 
-```swift
-@protocol CBCentralManagerDelegate <NSObject>
-
-/*!
- *  @method centralManager:didConnectPeripheral:
- *  @param central The central manager providing this information.
- *  @param peripheral The `CBPeripheral` that has connected.
- *  @discussion This method is invoked when a connection initiated by `connectPeripheral:options:` has succeeded.
- */
-- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral;
-```
-
 ![Original figure 1](/blog/swift-asynchronous-functions/01.png)
 
 The CBCentralManager header code below defines the following to support this asynchronous connection process:
@@ -27,33 +15,6 @@ The CBCentralManager header code below defines the following to support this asy
 - A weak reference to an optional CBCentralManagerDelegate object to receive delegate callbacks.
 - An initializer which accepts an optional CBCentralManagerDelegate object.
 - The connectPeripheral:options: method, which has an implementation that invokes the delegates centralManager:didConnectPeripheral: method when a successful connection is made.
-
-```swift
-CB_EXTERN_CLASS @interface CBCentralManager : CBManager
-
-/*!
- *  @property delegate
- *  @discussion The delegate object that will receive central events.
- */
-@property(nonatomic, weak, nullable) id<CBCentralManagerDelegate> delegate;
-
-/*!
- *  @method initWithDelegate:queue:
- *  @param delegate The delegate that will receive central role events.
- *  @param queue The dispatch queue on which the events will be dispatched.
- *  @discussion The initialization call. The events of the central role will be dispatched on the provided queue.
- */
-- (instancetype)initWithDelegate:(nullable id<CBCentralManagerDelegate>)delegate
-                           queue:(nullable dispatch_queue_t)queue;
-
-/*!
- *  @method connectPeripheral:options:
- *  @param peripheral The `CBPeripheral` to be connected.
- *  @param options An optional dictionary specifying connection behavior options.
- *  @discussion Initiates a connection to peripheral.
- */
-- (void)connectPeripheral:(CBPeripheral *)peripheral options:(nullable NSDictionary<NSString *, id> *)options;
-```
 
 ![Original figure 2](/blog/swift-asynchronous-functions/02.png)
 
@@ -73,57 +34,9 @@ When you use a closure as a completion handler, the parameters serve the same pu
 
 In the code below the DeviceDidConnectClosure typealias is used to define a closure type with two optional parameters. The DeviceService accepts a closure of this type as a completion handler parameter of its connectToDevice(deviceId:completion:) method. The DeviceService must then pass a nil value for one of the two optional completion handler parameters, depending upon whether the connect succeeded or failed.
 
-```swift
-/// Device service class
-class DeviceService: CBCentralManagerDelegate {
-    typealias DeviceDidConnectClosure = (_ isConnected: Bool?, _ error: DeviceServiceError?) -> Void
-
-    func connectToDevice(withID deviceId: String,
-                         completion: @escaping DeviceDidConnectClosure) {
-
-        guard let deviceInfo = DeviceService.discoveredDevices[deviceId] else {
-            let error = DeviceServiceError.connectError("Device \(deviceId) was not found.")
-            completion(nil, error)
-            return
-        }
-
-        deviceInfo.deviceDidConnect = completion
-        centralManager.connect(deviceInfo.device)
-    }
-
-    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        let deviceId = peripheral.identifier.uuidString
-
-        if let deviceInfo = DeviceService.discoveredDevices[deviceId] {
-            deviceInfo.deviceDidConnect?(peripheral.state == .connected, nil)
-        }
-    }
-}
-```
-
 ![Original figure 3](/blog/swift-asynchronous-functions/03.png)
 
 The DeviceViewModel class below calls the connectToDevice(deviceId:completion:) method. Because the isConnected and error parameters are optional, they must be unwrapped at the method call site.
-
-```swift
-/// Device view model class
-class DeviceViewModel: ObservableObject {
-    let service = DeviceService()
-
-    func connectToDevice(withID deviceId: String) {
-        service.connectToDevice(withID: deviceId) { [weak self] isConnected, error in
-            if let error {
-                self?.handleError(error)
-                return
-            }
-            if let isConnected {
-                self?.handleSuccess(isConnected)
-                return
-            }
-        }
-    }
-}
-```
 
 ![Original figure 4](/blog/swift-asynchronous-functions/04.png)
 
@@ -135,54 +48,9 @@ DeviceDidConnectClosure typealias which accepts a Bool.
 
 ConnectErrorClosure typealias which accepts a DeviceServiceError.
 
-```swift
-/// Device service class
-class DeviceService: CBCentralManagerDelegate {
-    typealias DeviceDidConnectClosure = (_ isConnected: Bool) -> Void
-    typealias ConnectErrorClosure = (_ error: DeviceServiceError) -> Void
-
-    func connectToDevice(withID deviceId: String,
-                         deviceDidConnect: @escaping DeviceDidConnectClosure,
-                         connectError: @escaping ConnectErrorClosure) {
-
-        guard let deviceInfo = DeviceService.discoveredDevices[deviceId] else {
-            let error = DeviceServiceError.connectError("Device \(deviceId) was not found.")
-            connectError(error)
-            return
-        }
-
-        deviceInfo.deviceDidConnect = deviceDidConnect
-        centralManager.connect(deviceInfo.device)
-    }
-
-    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        let deviceId = peripheral.identifier.uuidString
-
-        if let deviceInfo = DeviceService.discoveredDevices[deviceId] {
-            deviceInfo.deviceDidConnect?(peripheral.state == .connected)
-        }
-    }
-}
-```
-
 ![Original figure 5](/blog/swift-asynchronous-functions/05.png)
 
 When writing code to invoke a method with multiple completion handlers, Xcode autocomplete will help provide correct and concise syntax. This will produce a method call with a distinct scope for each result state. And, because the closure parameters are non-optional, there is no unwrapping needed in your completion handler implementation code.
-
-```swift
-/// Device view model class
-class DeviceViewModel: ObservableObject {
-    let service = DeviceService()
-
-    func connectToDevice(withID deviceId: String) {
-        service.connectToDevice(withID: deviceId) { [weak self] isConnected in
-            self?.handleSuccess(isConnected)
-        } connectError: { [weak self] error in
-            self?.handleError(error)
-        }
-    }
-}
-```
 
 ![Original figure 6](/blog/swift-asynchronous-functions/06.png)
 
@@ -192,55 +60,9 @@ In Swift 5 the Result type was added to the standard library. The Swift Result t
 
 Since the two Result cases map to the connectToDevice(deviceId:completion:) method result states, the Result type is ideal to use in the completion handler type. The DeviceService code below uses the DeviceDidConnectClosure typealias to define a closure type with a single non-optional Result type parameter. Using the Result enum here makes the result state explicit, and helps to produce code with improved safety and clarity.
 
-```swift
-/// Device service class
-class DeviceService: CBCentralManagerDelegate {
-    typealias DeviceDidConnectClosure = (_ result: Result<Bool, DeviceServiceError>) -> Void
-
-    func connectToDevice(withID deviceId: String,
-                         completion: @escaping DeviceDidConnectClosure) {
-
-        guard let deviceInfo = DeviceService.discoveredDevices[deviceId] else {
-            let error = DeviceServiceError.connectError("Device \(deviceId) was not found.")
-            completion(.failure(error))
-            return
-        }
-
-        deviceInfo.deviceDidConnect = completion
-        centralManager.connect(deviceInfo.device)
-    }
-
-    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        let deviceId = peripheral.identifier.uuidString
-
-        if let deviceInfo = DeviceService.discoveredDevices[deviceId] {
-            deviceInfo.deviceDidConnect?(.success(peripheral.state == .connected))
-        }
-    }
-}
-```
-
 ![Original figure 7](/blog/swift-asynchronous-functions/07.png)
 
 Using the Result enum also improves the code at the method call site. When you switch on the result it produces clean and familiar control flow, and the compiler enforces that both cases are included.
-
-```swift
-/// Device view model class
-class DeviceViewModel: ObservableObject {
-    let service = DeviceService()
-
-    func connectToDevice(withID deviceId: String) {
-        service.connectToDevice(withID: deviceId) { [weak self] result in
-            switch result {
-            case .success(let isConnected):
-                self?.handleSuccess(isConnected)
-            case .failure(let error):
-                self?.handleError(error)
-            }
-        }
-    }
-}
-```
 
 ![Original figure 8](/blog/swift-asynchronous-functions/08.png)
 
@@ -270,42 +92,9 @@ You can create a CheckedContinuation that can wrap a throwing function by callin
 
 In the DeviceService code below, the asynchronous throwing function connectToDevice(deviceId:) has been added to bridge calls to connectToDevice(deviceId:completion:). This bridge function uses a CheckedContinuation to resume execution based upon the case indicated by the Result enum.
 
-```swift
-/// Device service class
-class DeviceService: CBCentralManagerDelegate {
-
-    func connectToDevice(withID deviceId: String) async throws -> Bool {
-        return try await withCheckedThrowingContinuation { continuation in
-            connectToDevice(withID: deviceId) { result in
-                switch result {
-                case .success(let isConnected):
-                    continuation.resume(returning: isConnected)
-                case .failure(let error):
-                    continuation.resume(throwing: error)
-                }
-            }
-        }
-    }
-```
-
 ![Original figure 9](/blog/swift-asynchronous-functions/09.png)
 
 One of the benefits of using the new concurrency model is the compile time error checking. The code below shows the error displayed in Xcode autocomplete if you attempt to call an async function from within a synchronous function. An async function must operate within an asynchronous context, more specifically a task which can be suspended and resumed. To address this issue we could explicitly create a dedicated task for this work, or require that of the caller by declaring this function to be async.
-
-```swift
-/// Device view model class
-class DeviceViewModel: ObservableObject {
-    let service = DeviceService()
-
-    func connectToDevice(withID deviceId: String) {
-        do {
-            let isConnected = try await service.c
-            handleSuccess(isConnect
-        } catch {
-            handleError(error)
-        }
-    }
-```
 
 ![Original figure 10](/blog/swift-asynchronous-functions/10.png)
 
@@ -313,85 +102,19 @@ The connectToDevice(deviceId:) method in the DeviceViewModel code below has been
 
 The method implementation illustrates the use of the new asynchronous throwing bridge function of the DeviceService API. With the exception of the await keyword, this code is identical to the code we would write to call a synchronous throwing function! The code is succinct, easy to read, and errors are caught and handled appropriately rather than being included in the normal execution flow.
 
-```swift
-/// Device view model class
-class DeviceViewModel: ObservableObject {
-    let service = DeviceService()
-
-    func connectToDevice(withID deviceId: String) async {
-        do {
-            let isConnected = try await service.connectToDevice(withID: deviceId)
-            handleSuccess(isConnected)
-        } catch {
-            handleError(error)
-        }
-    }
-}
-```
-
 ![Original figure 11](/blog/swift-asynchronous-functions/11.png)
 
 ### Storing Continuations
 
 As discussed earlier, the DeviceService class conforms to the CBCentralManagerDelegate protocol, and therefore it must be able to handle multiple Core Bluetooth delegate callbacks over time. This means that the DeviceService needs to store any completion handlers it uses to notify its own callers of these events. It does that using a custom DeviceInfo class which has a property that matches the closure type. In the code below, the DeviceInfo deviceDidConnect property is used to store the completion handler passed to the connectToDevice(deviceId:completion:) method. That property is then used to invoke the completion handler when the centralManager:didConnectPeripheral: delegate callback method call is received.
 
-```swift
-class DeviceInfo {
-    let device: CBPeripheral
-    var deviceDidConnect: DeviceService.DeviceDidConnectClosure?
-
-    init(device: CBPeripheral) {
-        self.device = device
-    }
-}
-```
-
 ![Original figure 12](/blog/swift-asynchronous-functions/12.png)
 
 In the same way that we store our closure, we can store our continuation, we just need to create a property of the correct type. To do this you need to know that a continuation is just a struct with a specific generic type. For example, because the continuation in our async bridge function is checked (as opposed to unsafe), returns a Bool, and can throw an Error, its type is CheckedContinuation<Bool, Error>. In the following code DeviceInfo has been updated to replace the closure property with the connectContinuation property to store the continuation.
 
-```swift
-class DeviceInfo {
-    let device: CBPeripheral
-    var connectContinuation: CheckedContinuation<Bool, Error>?
-
-    init(device: CBPeripheral) {
-        self.device = device
-    }
-}
-```
-
 ![Original figure 13](/blog/swift-asynchronous-functions/13.png)
 
 Now that we have the ability to store the continuation, we can completely remove the wrapped connectToDevice(deviceId:completion:) method, and update our connectToDevice(deviceId:) async function implementation. The code below shows the updated DeviceService, which now uses a stored continuation to resume execution in response to a delegate callback.
-
-```swift
-/// Device service class
-class DeviceService: CBCentralManagerDelegate {
-
-    func connectToDevice(withID deviceId: String) async throws -> Bool {
-        return try await withCheckedThrowingContinuation { continuation in
-            guard let deviceInfo = DeviceService.discoveredDevices[deviceId] else {
-                let error = DeviceServiceError.connectError("Device \(deviceId) was not found.")
-                continuation.resume(throwing: error)
-                return
-            }
-
-            deviceInfo.connectContinuation = continuation
-            centralManager.connect(deviceInfo.device)
-        }
-    }
-
-    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        let deviceId = peripheral.identifier.uuidString
-
-        if let deviceInfo = DeviceService.discoveredDevices[deviceId] {
-            deviceInfo.connectContinuation?.resume(returning: peripheral.state == .connected)
-            deviceInfo.connectContinuation = nil
-        }
-    }
-}
-```
 
 ![Original figure 14](/blog/swift-asynchronous-functions/14.png)
 

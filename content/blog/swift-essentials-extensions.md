@@ -8,38 +8,9 @@ Extensions allow you to add new convenience initializers to an existing type. Th
 
 In the code below, a convenience initializer has been added to the User struct. However, once you add a custom initializer to a struct you lose the auto-generated memberwise initializer. This constraint is intended to prevent the accidental circumvention of necessary initialization code. The result is that the default initializer is neither available to the caller, nor available for delegation from within your custom initializer.
 
-```swift
-struct User {
-    let name: String?
-    let title: String?
-
-    init(name: String) {
-        self.name = name
-        self.title = "Unspecified"
-    }
-}
-
-let user = User(
-```
-
 ![Original figure 1](/blog/swift-essentials-extensions/01.png)
 
 Swift provides a way to solve this issue using an extension. In the code below, the convenience initializer has been added using an extension. By extending the struct the auto-generated memberwise initializer is retained, and both initializers are now available.
-
-```swift
-struct User {
-    let name: String?
-    let title: String?
-}
-
-extension User {
-    init(name: String) {
-        self.init(name: name, title: "Unspecified")
-    }
-}
-
-let user = User(
-```
 
 ![Original figure 2](/blog/swift-essentials-extensions/02.png)
 
@@ -49,26 +20,6 @@ You can use an extension to add a type method or instance method to an existing 
 
 In the code below, extensions are used to add the instance method printCoordinates() and the mutating instance method doubleRadius() to the Circle struct.
 
-```swift
-struct Circle {
-    var centerX = 0.0
-    var centerY = 0.0
-    var radius = 1.0
-}
-
-extension Circle {
-    // New instance method
-    func printCoordinates() {
-        print("(\(centerX), \(centerY))")
-    }
-
-    // New mutating instance method
-    mutating func doubleRadius() {
-        radius = radius * 2
-    }
-}
-```
-
 ![Original figure 3](/blog/swift-essentials-extensions/03.png)
 
 ## Computed Properties
@@ -76,25 +27,6 @@ extension Circle {
 Unlike stored properties, computed properties do not store any values. They instead provide a getter and optional setter to retrieve and set other properties indirectly. Extensions can be used to add new computed type properties and computed instance properties to an existing type. Extensions cannot be used to add new stored properties, or add observers to existing properties.
 
 In the code below, the Ingredient struct is extended with a new computed property named grams.
-
-```swift
-struct Ingredient {
-    let name: String?
-    var ounces = 0.0
-}
-
-extension Ingredient {
-    // New computed property
-    var grams: Double {
-        get {
-            return ounces * 28.3495
-        }
-        set(newGrams) {
-            ounces = newGrams * 0.035274
-        }
-    }
-}
-```
 
 ![Original figure 4](/blog/swift-essentials-extensions/04.png)
 
@@ -104,26 +36,6 @@ Swift supports nested types, which can be classes, structs, or enums that are em
 
 In the code below, the UserDefaults class is extended with the nested enum Keys, within which static constant string properties are defined.
 
-```swift
-extension UserDefaults {
-    // New nested type
-    enum Keys {
-        static let displayName = "displayName"
-        static let highScore = "highScore"
-    }
-}
-
-let userDefaults = UserDefaults.standard
-
-// Store user defaults
-userDefaults.set("Joe", forKey: UserDefaults.Keys.displayName)
-userDefaults.set(99, forKey: UserDefaults.Keys.highScore)
-
-// Retrieve user defaults
-let displayName = userDefaults.string(forKey: UserDefaults.Keys.displayName)
-let highScore = userDefaults.integer(forKey: UserDefaults.Keys.highScore)
-```
-
 ![Original figure 5](/blog/swift-essentials-extensions/05.png)
 
 ## Protocol Conformance
@@ -131,24 +43,6 @@ let highScore = userDefaults.integer(forKey: UserDefaults.Keys.highScore)
 Extensions enable you to conform an existing type to a new protocol, and add any methods or properties required by that protocol.
 
 In the code below, the Book struct is extended to conform to the CustomStringConvertible protocol. Types that conform to the CustomStringConvertible protocol must define a description property which implements the string representation of an instance. The description property is used by the String(describing:) initializer and the print(_:) function.
-
-```swift
-struct Book {
-    let title: String?
-    let author: String?
-}
-
-// New protocol conformance
-extension Book: CustomStringConvertible {
-    // New computed property
-    var description: String {
-        return "\(title ?? "") by \(author ?? "")"
-    }
-}
-
-let book = Book(title: "The Mythical Man-Month", author: "Fred Brooks")
-print(book)
-```
 
 ![Original figure 6](/blog/swift-essentials-extensions/06.png)
 
