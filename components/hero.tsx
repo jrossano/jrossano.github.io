@@ -43,12 +43,18 @@ export function Hero() {
           />
         </figure>
         <div className="mt-8 flex w-full flex-col items-center justify-center gap-3 sm:flex-row">
-          <MagicButton href="#projects">View selected work</MagicButton>
+          {/* <MagicButton href="#projects">View selected work</MagicButton> */}
+          <a
+            href={`mailto:${profile.email}`}
+            className="inline-flex h-12 w-full items-center justify-center rounded-lg border border-sky/50 px-7 text-sm font-medium text-cloud hover:bg-navy sm:w-60"
+          >
+            Email me directly
+          </a>
           <a
             href={profile.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-12 w-full items-center justify-center rounded-lg border border-sky/50 px-7 text-sm font-medium text-cloud hover:bg-navy sm:w-auto"
+            className="inline-flex h-12 w-full items-center justify-center rounded-lg border border-sky/50 px-7 text-sm font-medium text-cloud hover:bg-navy sm:w-60"
           >
             Message me on LinkedIn
           </a>

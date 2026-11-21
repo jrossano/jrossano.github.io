@@ -125,11 +125,11 @@ export function AskJoe() {
                 Ask
               </Button>
             </form>
-            <p className="mt-3 text-xs text-ash">
+            {/* <p className="mt-3 text-xs text-ash">
               {assistant.mode === "local"
                 ? "Runs in the browser from a local knowledge file. No API key."
                 : "This build calls NEXT_PUBLIC_CHAT_ENDPOINT. Quick ask still has local answers if that call fails."}
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

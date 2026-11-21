@@ -8,14 +8,16 @@ export const profile = {
   name: "Joe Rossano",
   role: "Lead Software Engineer",
   location: "Atlanta area",
+  email: "joe@rossano.net",
   linkedin: "https://www.linkedin.com/in/jrossano",
   fairdose: "https://fairdose.app",
-  fairdoseSummary: "An iOS GLP-1 injection tracker currently in development.",
+  fairdoseSummary: "A privacy-first iOS GLP-1 injection tracker currently in development.",
+  fairdoseDescription: "Track your doses, weight, and symptoms, and keep your medication schedule with reminders.",
   eyebrow: "Joe Rossano, Lead Software Engineer",
   headlineLead: "Over 25 years writing software and leading teams.",
   headlineAccent:
-    "Native iOS since 2012 — now leading Pay in 4 and Installment Loan at JPMorganChase, reaching tens of millions of customers with a 94 NPS.",
-  bio: "Lead Software Engineer with over 25 years of experience writing software and leading teams, having served as a Software Engineer, Lead Developer, Application Architect, and Scrum Master. Specializing in the design and development of native iOS apps since 2012, with a track record of shipping customer-facing features at scale, championing modern Swift architecture, and mentoring high-performing teams. I currently lead iOS engineering on Pay in 4 and Installment Loan at JPMorganChase, reaching tens of millions of customers with a 94 NPS, and I'm focused on modern Swift concurrency, accessible design, and building teams that ship reliably.",
+    "Native iOS since 2012. Leading iOS development for Pay in 4 and Installment Loan projects at JPMorganChase.",
+  bio: "Lead Software Engineer with over 25 years of experience writing software and leading teams, having served as a Lead Software Engineer, Application Architect, and Scrum Master. Specializing in the design and development of native iOS apps since 2012, with a track record of shipping customer-facing features at scale, championing modern Swift practices, and mentoring high-performing teams. I currently lead iOS engineering on Pay in 4 and Installment Loan projects at JPMorganChase, reaching tens of millions of customers with a 94 NPS.",
 } as const;
 
 /** A short first-person line Joe supplied. He expects to rewrite it. */
@@ -24,7 +26,7 @@ export const aiNote = "I use GitHub Copilot in VS Code and Claude Opus in Xcode.
 export const competencies = [
   {
     title: "Architecture & Engineering Practices",
-    body: "Swift Concurrency (async/await, actors), MVVM/MVVM-C, Swift 6 migration & strict concurrency, Swift Package Manager & modularization, system design, design system development",
+    body: "Swift Concurrency (async/await, actors), MVVM/MVVM-C, Swift 6 migration & strict concurrency, Swift Package Manager & modularization, system design & API integration",
   },
   {
     title: "Accessibility",
@@ -65,14 +67,16 @@ export const techStack = [
   "MVVM",
   "MVVM-C",
   "Swift Package Manager",
-  "XCTest",
   "Swift Testing",
-  "Core Bluetooth",
   "UIKit",
   "VoiceOver",
   "Dynamic Type",
   "WireMock",
   "Split / Harness",
+  "Core Bluetooth",
+  "GitHub Copilot",
+  "Claude Code",
+  "AWS"
 ] as const;
 
 export type Testimonial = {
@@ -195,7 +199,6 @@ export const apps: AppCase[] = [
   {
     id: "installment-loan",
     name: "Installment Loan",
-    featured: true,
     technologies: ["SwiftUI", "MVVM", "async/await", "actors", "VoiceOver", "Dynamic Type", "Dark Mode"],
     body: "Led development and maintenance of the Installment Loan Swift component powering financing in the Chase travel app. The app delivers one-time and automatic recurring payment flows, with redesigned loan-detail screens giving customers clear visibility into balances and payment schedules. It's built on a SwiftUI MVVM architecture using async/await and actor-based concurrency, with ADA-compliant screens supporting dynamic type, dark mode, and VoiceOver.",
   },
@@ -208,8 +211,7 @@ export const apps: AppCase[] = [
   },
   {
     id: "compliance-testing",
-    name: "Compliance Testing",
-    featured: true,
+    name: "Injector Verifier",
     technologies: ["Bluetooth Low Energy", "RZBluetooth", "CoreBluetoothMock"],
     body: "This app was developed for a major pharmaceutical company. It is used by hardware engineers and quality assurance to verify the correct behavior of proprietary Bluetooth-enabled medical devices. It uses Bluetooth Low Energy (BLE) and the RZBluetooth library to enable the automated execution of custom test suites. I used Nordic Semiconductor's CoreBluetoothMock library to emulate Core Bluetooth objects for unit testing.",
   },
@@ -220,21 +222,23 @@ export const apps: AppCase[] = [
     technologies: ["Core Bluetooth", "Bluetooth Low Energy", "Charts"],
     body: "This app was developed for an innovative medical technology company. The app facilitates the use of NeuroNode — the world's first wearable EMG assistive communications device — to operate iOS devices using bioelectrical signals. It uses Bluetooth Low Energy (BLE) and Apple's Core Bluetooth framework to help users personalize NeuroNode for use with Apple's assistive technology. Real-time graphing of EMG signals is accomplished using the Charts framework.",
   },
-  {
-    id: "dashboard",
-    name: "Dashboard",
-    technologies: ["VIPER"],
-    body: "This app was developed for use by internal employees and contractors. It is used to perform time reporting and record business expenses. The app was designed and built using the VIPER architectural pattern. VIPER is an application of Clean Architecture which consists of the following components: View, Interactor, Presenter, Entity, and Routing.",
-  },
+  // {
+  //   id: "dashboard",
+  //   name: "Dashboard",
+  //   technologies: ["VIPER"],
+  //   body: "This app was developed for use by internal employees and contractors. It is used to perform time reporting and record business expenses. The app was designed and built using the VIPER architectural pattern. VIPER is an application of Clean Architecture which consists of the following components: View, Interactor, Presenter, Entity, and Routing.",
+  // },
   {
     id: "puck",
     name: "Puck",
+    featured: true,
     technologies: ["Core Bluetooth", "Bluetooth Low Energy"],
     body: "This app was developed for a Midwest based startup company. It is a universal remote control app used to consolidate remotes, and to overcome the line-of-sight and range limitations of infrared (IR) technology. It uses Bluetooth Low Energy (BLE) and Apple's Core Bluetooth framework to send IR commands to a custom built hardware component.",
   },
   {
     id: "rsq-mobile",
     name: "RSQ Mobile",
+    featured: true,
     technologies: ["RestKit"],
     body: "This app was developed for a healthcare technology management company. It is used by service technicians to manage notifications, work orders, and medical device information. It uses the RestKit framework to interact with custom built RESTful web services.",
   },
@@ -244,13 +248,13 @@ export const apps: AppCase[] = [
     technologies: ["GPUImage", "ObjectiveFlickr"],
     body: "This app was developed for a Japanese art exhibition at an art museum. It is used by museum guests, who can create a Japanese woodblock print-inspired selfie. Guests can email their selfie, and choose to share it on the museum's Flickr Photostream. It uses the GPUImage framework for GPU-based image processing. Flickr integration is accomplished using the ObjectiveFlickr API framework.",
   },
-  {
-    id: "music-viewer",
-    name: "Music Viewer",
-    note: "Mac app",
-    technologies: ["PDF Kit"],
-    body: "This Mac app is part of an onstage digital music stand system for performing ensembles, which eliminates the need for paper copies. Musicians use a foot pedal to traverse a setlist and advance through each song. It uses Apple's PDF Kit framework to display sheet music and song lyrics.",
-  },
+  // {
+  //   id: "music-viewer",
+  //   name: "Music Viewer",
+  //   note: "Mac app",
+  //   technologies: ["PDF Kit"],
+  //   body: "This Mac app is part of an onstage digital music stand system for performing ensembles, which eliminates the need for paper copies. Musicians use a foot pedal to traverse a setlist and advance through each song. It uses Apple's PDF Kit framework to display sheet music and song lyrics.",
+  // },
   {
     id: "tech-xpert",
     name: "Tech-Xpert",
@@ -281,26 +285,26 @@ export const apps: AppCase[] = [
     technologies: ["SpriteKit"],
     body: "The Flappy Creeper app is my contribution to the Flappy Bird meme. I built this app for my sons, who are fans of the game Minecraft. It was built using Apple's Sprite Kit, a framework for creating 2D games.",
   },
-  {
-    id: "agile-roadmap",
-    name: "Agile Roadmap",
-    technologies: ["Core Data"],
-    body: "The Agile Roadmap app is used by Product Owners to perform strategic product planning. The app uses Apple's Core Data framework to persist and manage product information.",
-  },
-  {
-    id: "cook-portfolio",
-    name: "Portfolio",
-    note: "Resume. Not on the Weebly Apps page, so there is no gallery.",
-    technologies: ["Media Player", "Brightcove", "Core Data", "Message UI"],
-    body: "Developed for Cook Medical Group while Joe was an iOS Developer at E-gineering (Aug 2012 – Jan 2013). A native iOS app enabling the sales team to share product documentation and videos with customers.",
-  },
-  {
-    id: "iris",
-    name: "IRIS",
-    note: "Resume. Not on the Weebly Apps page, so there is no gallery.",
-    technologies: ["Address Book", "Event Kit", "MapKit", "Core Data", "Core Location"],
-    body: "Developed for Cook Medical Group while Joe was an iOS Developer at E-gineering (Jan 2012 – Aug 2012). A native iOS app enabling the sales team to record and track customer interactions.",
-  },
+  // {
+  //   id: "agile-roadmap",
+  //   name: "Agile Roadmap",
+  //   technologies: ["Core Data"],
+  //   body: "The Agile Roadmap app is used by Product Owners to perform strategic product planning. The app uses Apple's Core Data framework to persist and manage product information.",
+  // },
+  // {
+  //   id: "cook-portfolio",
+  //   name: "Portfolio",
+  //   note: "Resume. Not on the Weebly Apps page, so there is no gallery.",
+  //   technologies: ["Media Player", "Brightcove", "Core Data", "Message UI"],
+  //   body: "Developed for Cook Medical Group while Joe was an iOS Developer at E-gineering (Aug 2012 – Jan 2013). A native iOS app enabling the sales team to share product documentation and videos with customers.",
+  // },
+  // {
+  //   id: "iris",
+  //   name: "IRIS",
+  //   note: "Resume. Not on the Weebly Apps page, so there is no gallery.",
+  //   technologies: ["Address Book", "Event Kit", "MapKit", "Core Data", "Core Location"],
+  //   body: "Developed for Cook Medical Group while Joe was an iOS Developer at E-gineering (Jan 2012 – Aug 2012). A native iOS app enabling the sales team to record and track customer interactions.",
+  // },
 ];
 
 export type BlogPost = {

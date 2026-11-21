@@ -14,9 +14,14 @@ export function Footer() {
           </span>
         </Link>
         <p className="text-sm text-ash">© {new Date().getFullYear()} {profile.name}</p>
-        <a href={profile.linkedin} className="text-sm font-medium text-sky hover:underline" target="_blank" rel="noopener noreferrer">
-          LinkedIn
-        </a>
+        <div className="flex items-center gap-6">
+          <a href={`mailto:${profile.email}`} className="text-sm font-medium text-sky hover:underline">
+            Email
+          </a>
+          <a href={profile.linkedin} className="text-sm font-medium text-sky hover:underline" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+        </div>
       </div>
     </footer>
   );

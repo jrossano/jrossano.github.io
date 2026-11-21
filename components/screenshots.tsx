@@ -1,6 +1,13 @@
 import type { Shot } from "@/content/screenshots";
 
-export function Screenshots({ shots, label, tall }: { shots: Shot[]; label: string; tall?: boolean }) {
+const sizeClasses = {
+  sm: "h-40 w-auto rounded-xl border border-cloud/10 bg-midnight sm:h-48",
+  md: "h-52 w-auto rounded-xl border border-cloud/10 bg-midnight sm:h-64",
+  lg: "h-64 w-auto rounded-2xl border border-cloud/10 bg-midnight sm:h-80",
+  xl: "h-80 w-auto rounded-2xl border border-cloud/10 bg-midnight sm:h-[28rem]",
+};
+
+export function Screenshots({ shots, label, size }: { shots: Shot[]; label: string; size?: "sm" | "md" | "lg"; }) {
   if (shots.length === 0) return null;
   return (
     <ul
@@ -15,11 +22,7 @@ export function Screenshots({ shots, label, tall }: { shots: Shot[]; label: stri
             alt={shot.alt}
             width={shot.width}
             height={shot.height}
-            className={
-              tall
-                ? "h-80 w-auto rounded-2xl border border-cloud/10 bg-midnight sm:h-[28rem]"
-                : "h-52 w-auto rounded-xl border border-cloud/10 bg-midnight sm:h-64"
-            }
+            className={sizeClasses[size ?? "md"]}
           />
         </li>
       ))}

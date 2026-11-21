@@ -1,6 +1,4 @@
 import { AboutGrid } from "@/components/about-grid";
-import { AiUse } from "@/components/ai-use";
-import { AskJoe } from "@/components/ask-joe";
 import { BlogList } from "@/components/blog-list";
 import { Contact } from "@/components/contact";
 import { Experience } from "@/components/experience";
@@ -8,6 +6,8 @@ import { Hero } from "@/components/hero";
 import { Projects } from "@/components/projects";
 import { SectionHeading } from "@/components/section-heading";
 import { Testimonials } from "@/components/testimonials";
+import { AiUse } from "@/components/ai-use";
+import { AskJoe } from "@/components/ask-joe";
 import Link from "next/link";
 
 export default function HomePage() {
@@ -15,11 +15,9 @@ export default function HomePage() {
     <>
       <Hero />
       <AboutGrid />
-      <AskJoe />
       <Projects />
       <Testimonials />
       <Experience />
-      <AiUse />
       <section id="blog" aria-labelledby="blog-heading" className="scroll-mt-28 px-4 py-16 sm:px-6">
         <SectionHeading id="blog-heading" accent="blog">
           Swift
@@ -36,6 +34,8 @@ export default function HomePage() {
           </Link>
         </p>
       </section>
+      {/* <AiUse /> */}
+      {/* <AskJoe /> */}
       <Contact />
     </>
   );

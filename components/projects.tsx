@@ -9,12 +9,12 @@ const featured = apps.filter((app) => app.featured);
 export function Projects() {
   return (
     <section id="projects" aria-labelledby="projects-heading" className="scroll-mt-28 px-4 py-16 sm:px-6">
-      <SectionHeading id="projects-heading" accent="selected work">
-        A small set of
+      <SectionHeading id="projects-heading" accent="Joe's projects">
+        A small selection of
       </SectionHeading>
-      <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-ash sm:text-base">
+      {/* <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-ash sm:text-base">
         Case studies from the current site, with the gallery images from that Apps page.
-      </p>
+      </p> */}
       <div className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-6 lg:grid-cols-2">
         {featured.map((app) => (
           <article key={app.id} className="panel flex flex-col overflow-hidden">
@@ -37,8 +37,8 @@ export function Projects() {
         ))}
       </div>
       <p className="mt-8 text-center">
-        <Link href="/apps/" className="text-sm font-medium text-sky hover:underline">
-          All {apps.length} apps
+        <Link href="/apps/" className="text-lg font-medium text-sky hover:underline">
+          See more projects...
         </Link>
       </p>
     </section>

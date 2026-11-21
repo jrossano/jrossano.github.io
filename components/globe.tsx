@@ -3,6 +3,13 @@
 import { useEffect, useRef } from "react";
 
 const ATLANTA: [number, number] = [33.749, -84.388];
+const INDIANAPOLIS: [number, number] = [39.7684, -86.1581];
+const HARTFORD: [number, number] = [41.7637, -72.6851];
+const MINNEAPOLIS: [number, number] = [44.9778, -93.2650];
+const SALEM: [number, number] = [44.9429, -123.0355];
+const TAMPA: [number, number] = [27.9480, -82.4580];
+const NEW_BRUNSWICK: [number, number] = [40.4883, -74.4478];
+
 
 export function Globe() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -46,7 +53,15 @@ export function Globe() {
         baseColor: [0.055, 0.102, 0.31],
         markerColor: [1, 0.71, 0.28],
         glowColor: [0, 0.66, 1],
-        markers: [{ location: ATLANTA, size: 0.08 }],
+        markers: [
+          { location: ATLANTA, size: 0.08 },
+          { location: INDIANAPOLIS, size: 0.08 },
+          { location: HARTFORD, size: 0.08 },
+          { location: MINNEAPOLIS, size: 0.08 },
+          { location: SALEM, size: 0.08 },
+          { location: TAMPA, size: 0.08 },
+          { location: NEW_BRUNSWICK, size: 0.08 }
+        ],
       });
       if (destroyed) {
         instance.destroy();
@@ -82,7 +97,7 @@ export function Globe() {
   return (
     <canvas
       ref={canvasRef}
-      aria-label="Draggable globe with a marker on Atlanta. Arrow keys rotate it when focused."
+      aria-label="Draggable globe with a markers. Arrow keys rotate it when focused."
       role="img"
       tabIndex={0}
       className="h-full w-full cursor-grab opacity-0 transition-opacity duration-700 focus-visible:outline focus-visible:outline-sky active:cursor-grabbing"

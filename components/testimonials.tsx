@@ -7,8 +7,8 @@ const featured = testimonials.filter((item) => item.featured);
 export function Testimonials() {
   return (
     <section id="testimonials" aria-labelledby="testimonials-heading" className="scroll-mt-28 px-4 py-16 sm:px-6">
-      <SectionHeading id="testimonials-heading" accent="about the work">
-        What people say
+      <SectionHeading id="testimonials-heading" accent="Joe's work">
+        What people say about
       </SectionHeading>
       <div className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-5">
         {featured.map((item) => (
@@ -23,12 +23,10 @@ export function Testimonials() {
           </figure>
         ))}
       </div>
-      <p className="mx-auto mt-6 max-w-3xl text-center text-sm text-ash">
-        Four more published recommendations, from Barnabas Helmy, Dax Hafer, Rob Cadick, and Brian Van Pelt, are on the{" "}
-        <Link href="/about/#recommendations" className="text-sky hover:underline">
-          About page
+      <p className="mt-8 text-center">
+        <Link href="/testimonials/" className="text-lg font-medium text-sky hover:underline">
+          See more testimonials...
         </Link>
-        .
       </p>
     </section>
   );

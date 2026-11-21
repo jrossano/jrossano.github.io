@@ -17,7 +17,7 @@ export function AboutGrid() {
           <p className="text-sm text-ash">About Joe</p>
           <p className="mt-4 max-w-3xl text-sm leading-relaxed text-cloud sm:text-base">{profile.bio}</p>
           <p className="mt-6 max-w-xl text-2xl font-bold leading-snug text-cloud sm:text-3xl">
-            Focused on modern Swift concurrency, accessible design, and building teams that ship reliably.
+            Focused on modern Swift architecture, accessible design, and building teams that ship reliably.
           </p>
           <Link href="/about/" className="mt-6 inline-flex text-sm font-medium text-sky hover:underline">
             Experience, certifications, and more recommendations
@@ -27,16 +27,16 @@ export function AboutGrid() {
         <article className="panel relative flex min-h-72 flex-col overflow-hidden p-6 md:col-span-2">
           <p className="text-sm text-ash">Drag the globe</p>
           <h3 className="mt-2 max-w-[14rem] text-xl font-bold text-cloud sm:text-2xl">
-            Based in the Atlanta area
+            Currently based in Atlanta, Georgia
           </h3>
           <div className="relative mx-auto mt-2 aspect-square w-full max-w-[260px]">
             <Globe />
           </div>
-          <p className="text-xs text-ash">Arrow keys rotate the globe when it is focused.</p>
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-cloud sm:text-base">Lived and worked across the U.S. in Connecticut, Florida, Georgia, Indiana, Minnesota, New Jersey, and Oregon.</p>
         </article>
 
         <article className="panel p-6 md:col-span-3">
-          <p className="text-sm text-ash">From the published competencies and case studies</p>
+          <p className="text-sm text-ash">Skills and core competencies</p>
           <h3 className="mt-2 text-2xl font-bold text-cloud sm:text-3xl">My tech stack</h3>
           <TechStack />
         </article>
@@ -50,6 +50,7 @@ export function AboutGrid() {
             <p className="mt-4 text-sm text-ash">Inside my latest R&amp;D</p>
             <h3 className="mt-2 text-2xl font-bold text-cloud sm:text-3xl">FairDose</h3>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-cloud">{profile.fairdoseSummary}</p>
+            <p className="mt-3 max-w-md text-sm leading-relaxed text-cloud">{profile.fairdoseDescription}</p>
             <a
               href={profile.fairdose}
               className="mt-4 inline-flex text-sm font-medium text-sky hover:underline"
@@ -69,22 +70,34 @@ export function AboutGrid() {
 
         <article className="panel p-6 md:col-span-2">
           <p className="text-sm text-ash">Architecture</p>
-          <h3 className="mt-2 text-xl font-bold leading-snug text-cloud">Championing modern Swift architecture</h3>
+          <h3 className="mt-2 text-xl font-bold leading-snug text-cloud">Championing modern Swift practices</h3>
           <p className="mt-3 text-sm leading-relaxed text-ash">{architecture?.body}</p>
         </article>
 
-        <article className="panel flex flex-col justify-between bg-[linear-gradient(160deg,#1F4FE0_0%,#0E1A4F_70%)] p-6 md:col-span-2">
-          <h3 className="text-2xl font-bold leading-snug text-cloud">Want to talk?</h3>
-          <p className="mt-3 text-sm text-cloud/90">LinkedIn is the way to reach Joe.</p>
-          <a
-            href={profile.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-flex h-11 items-center justify-center rounded-lg bg-midnight px-4 text-sm font-medium text-cloud"
-          >
-            Message me on LinkedIn
-          </a>
-        </article>
+    <article className="panel flex flex-col justify-between bg-[linear-gradient(160deg,#1F4FE0_0%,#0E1A4F_70%)] p-6 md:col-span-2">
+      <div>
+        <h3 className="text-2xl font-bold leading-snug text-cloud">Want to talk?</h3>
+        <p className="mt-3 text-sm text-cloud/90">Email or message me on LinkedIn.</p>
+      </div>
+
+      <div className="mt-6 flex flex-col gap-2.5">
+        <a
+          href={`mailto:${profile.email}`}
+          className="inline-flex h-11 items-center justify-center rounded-lg bg-midnight px-4 text-sm font-medium text-cloud"
+        >
+          Email me directly
+        </a>
+        <a
+          href={profile.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex h-11 items-center justify-center rounded-lg bg-midnight px-4 text-sm font-medium text-cloud"
+        >
+          Message me on LinkedIn
+        </a>
+      </div>
+    </article>
+
       </div>
     </section>
   );

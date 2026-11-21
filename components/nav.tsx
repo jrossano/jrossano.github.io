@@ -7,12 +7,15 @@ import { profile } from "@/content/site";
 
 const links = [
   { href: "about", label: "About" },
-  { href: "/apps/", label: "Apps", page: true },
-  { href: "projects", label: "Work" },
-  { href: "ask-joe", label: "Ask Joe" },
+  { href: "projects", label: "Projects" },
+  { href: "testimonials", label: "Testimonials" },
   { href: "experience", label: "Experience" },
-  { href: "/blog/", label: "Blog", page: true },
+  // { href: "blog", label: "Blog" },
   { href: "contact", label: "Contact" },
+
+  { href: "/apps/", label: "Apps", page: true },
+  { href: "/blog/", label: "Blog", page: true },
+  // { href: "ask-joe", label: "Ask Joe" },
 ];
 
 function isHome(pathname: string) {

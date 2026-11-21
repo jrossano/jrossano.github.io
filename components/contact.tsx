@@ -11,14 +11,20 @@ export function Contact() {
             Want to
           </SectionHeading>
           <p className="mx-auto mt-4 max-w-lg text-sm text-ash sm:text-base">
-            Joe Rossano is a Lead Software Engineer in the Atlanta area. LinkedIn is the way to reach him.
+            Joe Rossano is a Lead Software Engineer in the Atlanta area. Email or message Joe on LinkedIn.
           </p>
-          <div className="mt-8 flex flex-col items-center gap-3">
+          <div className="mt-8 flex flex-row items-center justify-center gap-3">
+            <a
+              href={`mailto:${profile.email}`}
+              className="inline-flex h-12 items-center justify-center rounded-lg bg-royal px-7 text-sm sm:w-60 font-medium text-cloud shadow-[0_0_28px_-10px_rgba(0,168,255,0.9)] hover:bg-royal/90"
+            >
+              Email me directly
+            </a>
             <a
               href={profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-royal px-7 text-sm font-medium text-cloud shadow-[0_0_28px_-10px_rgba(0,168,255,0.9)] hover:bg-royal/90 sm:w-auto"
+              className="inline-flex h-12 items-center justify-center rounded-lg bg-royal px-7 text-sm sm:w-60 font-medium text-cloud shadow-[0_0_28px_-10px_rgba(0,168,255,0.9)] hover:bg-royal/90"
             >
               Message me on LinkedIn
             </a>
