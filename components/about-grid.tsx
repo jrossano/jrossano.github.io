@@ -19,20 +19,20 @@ export function AboutGrid() {
           <p className="mt-6 max-w-xl text-2xl font-bold leading-snug text-cloud sm:text-3xl">
             Focused on modern Swift architecture, accessible design, and building teams that ship reliably.
           </p>
-          <Link href="/about/" className="mt-6 inline-flex text-sm font-medium text-sky hover:underline">
+          {/* <Link href="/about/" className="mt-6 inline-flex text-sm font-medium text-sky hover:underline">
             Experience, certifications, and more recommendations
-          </Link>
+          </Link> */}
         </article>
 
         <article className="panel relative flex min-h-72 flex-col overflow-hidden p-6 md:col-span-2">
           <p className="text-sm text-ash">Drag the globe</p>
-          <h3 className="mt-2 max-w-[14rem] text-xl font-bold text-cloud sm:text-2xl">
-            Currently based in Atlanta, Georgia
+          <h3 className="mt-2 whitespace-nowrap text-lg font-bold text-cloud sm:text-2xl">
+            Based in Atlanta, Georgia
           </h3>
-          <div className="relative mx-auto mt-2 aspect-square w-full max-w-[260px]">
+          <div className="relative mx-auto mt-2 aspect-square w-full max-w-[230px]">
             <Globe />
           </div>
-          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-cloud sm:text-base">Lived and worked across the U.S. in Connecticut, Florida, Georgia, Indiana, Minnesota, New Jersey, and Oregon.</p>
+          <p className="max-w-3xl text-sm leading-relaxed text-cloud sm:text-base">Lived and worked across the U.S. in Connecticut, Florida, Georgia, Indiana, Minnesota, New Jersey, and Oregon.</p>
         </article>
 
         <article className="panel p-6 md:col-span-3">
@@ -62,7 +62,7 @@ export function AboutGrid() {
           </div>
         </article>
 
-        <article className="panel p-6 md:col-span-2">
+        {/* <article className="panel p-6 md:col-span-2">
           <p className="text-sm text-ash">Accessibility</p>
           <h3 className="mt-2 text-xl font-bold leading-snug text-cloud">Accessible by default, not an afterthought</h3>
           <p className="mt-3 text-sm leading-relaxed text-ash">{accessibility?.body}</p>
@@ -96,9 +96,26 @@ export function AboutGrid() {
           Message me on LinkedIn
         </a>
       </div>
-    </article>
+    </article> */}
 
       </div>
+
+            <section
+        aria-labelledby="competencies-heading"
+        className="mx-auto mt-16 max-w-6xl"
+      >
+        <h2 id="competencies-heading" className="text-3xl font-bold text-cloud">
+          Core competencies
+        </h2>
+        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+          {competencies.map((item) => (
+            <article key={item.title} className="panel p-5">
+              <h3 className="text-lg font-semibold text-cloud">{item.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ash">{item.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
     </section>
   );
 }

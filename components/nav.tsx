@@ -9,7 +9,7 @@ const links: { href: string; label: string; page?: boolean }[] = [
   { href: "about", label: "About" },
   { href: "projects", label: "Projects" },
   { href: "testimonials", label: "Testimonials" },
-  { href: "experience", label: "Experience" },
+  // { href: "experience", label: "Experience" },
   { href: "certifications", label: "Certifications" },
   { href: "blog", label: "Blog" },
   { href: "contact", label: "Contact" },
@@ -42,7 +42,8 @@ export function Nav() {
             {profile.name}
           </span>
         </Link>
-        <ul className="flex items-center gap-1 [mask-image:linear-gradient(90deg,#000_calc(100%-1.5rem),transparent)] sm:gap-2 sm:[mask-image:none]">
+        <span className="hidden h-5 w-px shrink-0 bg-cloud/15 lg:block" aria-hidden />
+          <ul className="flex items-center gap-1 [mask-image:linear-gradient(90deg,#000_calc(100%-1.5rem),transparent)] sm:gap-2 sm:[mask-image:none]">
           {links.map((link) => {
             const href = link.page ? link.href : home ? `#${link.href}` : `/#${link.href}`;
             const current = link.page ? pathname.startsWith(link.href.replace(/\/$/, "")) : false;

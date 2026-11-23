@@ -19,7 +19,7 @@ export default function HomePage() {
       <AboutGrid />
       <Projects />
       <Testimonials />
-      <Experience />
+      {/* <Experience /> */}
       <Certifications />
       <section id="blog" aria-labelledby="blog-heading" className="scroll-mt-28 px-4 py-16 sm:px-6">
         <SectionHeading id="blog-heading" accent="Joe's blog">
