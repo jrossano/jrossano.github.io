@@ -10,11 +10,11 @@ const links = [
   { href: "projects", label: "Projects" },
   { href: "testimonials", label: "Testimonials" },
   { href: "experience", label: "Experience" },
-  // { href: "blog", label: "Blog" },
+  { href: "certifications", label: "Certifications" },
+  { href: "blog", label: "Blog" },
   { href: "contact", label: "Contact" },
 
-  { href: "/apps/", label: "Apps", page: true },
-  { href: "/blog/", label: "Blog", page: true },
+  // { href: "/blog/", label: "Blog", page: true },
   // { href: "ask-joe", label: "Ask Joe" },
 ];
 

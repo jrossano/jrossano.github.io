@@ -150,39 +150,44 @@ export const training = [
   {
     group: "AWS Certification",
     items: [
-      "AWS Certified AI Practitioner — September 2026",
-      "AWS Certified Cloud Practitioner — December 2023",
+      { name: "AWS Certified AI Practitioner", date: "September 2026" },
+      { name: "AWS Cloud Quest: Machine Learning", date: "September 2026" },
+      { name: "AWS Cloud Quest: Generative AI Practitioner", date: "August 2025" },
+      { name: "AWS Certified Cloud Practitioner", date: "December 2023" },
     ],
   },
   {
     group: "iOS Training",
     items: [
-      "The iOS Architect (Matteo Manferdini) — September 2021",
-      "SwiftUI Design and Development (Design+Code) — December 2020",
-      "Functional Programming in Swift (Dim Sum Thinking) — June 2018",
-      "Advanced iOS Development (Big Nerd Ranch) — November 2014",
+      { name: "The iOS Architect (Matteo Manferdini)", date: "September 2021" },
+      { name: "SwiftUI Design and Development (Design+Code)", date: "December 2020" },
+      { name: "Functional Programming in Swift (Dim Sum Thinking)", date: "June 2018" },
+      { name: "Advanced iOS Development (Big Nerd Ranch)", date: "November 2014" },
     ],
   },
   {
     group: "Scrum Certification",
     items: [
-      "Certified Scrum Product Owner — October 2008",
-      "Certified Scrum Practitioner — January 2008",
-      "Certified Scrum Master — October 2005",
+      { name: "Certified Scrum Product Owner", date: "October 2008" },
+      { name: "Certified Scrum Practitioner", date: "January 2008" },
+      { name: "Certified Scrum Master", date: "October 2005" },
     ],
   },
   {
     group: "Java Certification",
     items: [
-      "Certified Enterprise Architect — January 2003",
-      "Certified Web Component Developer — August 2001",
-      "Certified Java Developer — June 2001",
-      "Certified Java Programmer — March 2000",
+      { name: "Certified Enterprise Architect", date: "January 2003" },
+      { name: "Certified Web Component Developer", date: "August 2001" },
+      { name: "Certified Java Developer", date: "June 2001" },
+      { name: "Certified Java Programmer", date: "March 2000" },
     ],
   },
   {
     group: "Rutgers University",
-    items: ["MS in Management — May 1994", "BA in Labor Studies — May 1992"],
+    items: [
+      { name: "MS in Management", date: "May 1994" },
+      { name: "BA in Labor Studies", date: "May 1992" },
+    ],
   },
 ] as const;
 

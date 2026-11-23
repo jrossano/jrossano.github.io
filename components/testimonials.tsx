@@ -14,7 +14,7 @@ export function Testimonials() {
         {featured.map((item) => (
           <figure key={item.id} className="panel p-6 sm:p-8">
             <blockquote>
-              <p className="text-base leading-relaxed text-cloud sm:text-lg">&ldquo;{item.quote}&rdquo;</p>
+              <p className="leading-relaxed text-base sm:text-md">&ldquo;{item.quote}&rdquo;</p>
             </blockquote>
             <figcaption className="mt-6 border-t border-cloud/10 pt-4">
               <p className="font-semibold text-cloud">{item.name}</p>

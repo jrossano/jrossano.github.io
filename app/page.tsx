@@ -1,8 +1,10 @@
 import { AboutGrid } from "@/components/about-grid";
 import { BlogList } from "@/components/blog-list";
+import { BlogPosts } from "@/components/blog-posts";
 import { Contact } from "@/components/contact";
 import { Experience } from "@/components/experience";
 import { Hero } from "@/components/hero";
+import { Certifications } from "@/components/certifications";
 import { Projects } from "@/components/projects";
 import { SectionHeading } from "@/components/section-heading";
 import { Testimonials } from "@/components/testimonials";
@@ -18,21 +20,14 @@ export default function HomePage() {
       <Projects />
       <Testimonials />
       <Experience />
+      <Certifications />
       <section id="blog" aria-labelledby="blog-heading" className="scroll-mt-28 px-4 py-16 sm:px-6">
-        <SectionHeading id="blog-heading" accent="blog">
-          Swift
+        <SectionHeading id="blog-heading" accent="Joe's blog">
+          Swift posts from
         </SectionHeading>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-ash sm:text-base">
-          Six essays, including the Swift Essentials series, from optionals through async/await.
-        </p>
-        <div className="mx-auto mt-10 max-w-3xl">
-          <BlogList />
+        <div className="mx-auto mt-6 max-w-6xl">
+          <BlogPosts />
         </div>
-        <p className="mt-6 text-center">
-          <Link href="/blog/" className="text-sm font-medium text-sky hover:underline">
-            Blog index
-          </Link>
-        </p>
       </section>
       {/* <AiUse /> */}
       {/* <AskJoe /> */}

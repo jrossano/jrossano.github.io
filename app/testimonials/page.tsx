@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
-import { Screenshots } from "@/components/screenshots";
-import { engagements } from "@/content/engagements";
-import { screenshots } from "@/content/screenshots";
 import { testimonials } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Projects",
-  description: "iOS and Mac case studies from Joe Rossano's current site and resume.",
+  title: "Testimonials",
+  description: "Testimonials Joe received while working for JPMorganChase and E-gineering.",
 };
 
 export default function TestimonialsPage() {
@@ -23,7 +20,7 @@ export default function TestimonialsPage() {
         {testimonials.map((item) => (
           <figure key={item.id} className="panel p-6 sm:p-8">
             <blockquote>
-              <p className="text-base leading-relaxed text-cloud sm:text-lg">&ldquo;{item.quote}&rdquo;</p>
+              <p className="text-base leading-relaxed text-cloud sm:text-md">&ldquo;{item.quote}&rdquo;</p>
             </blockquote>
             <figcaption className="mt-6 border-t border-cloud/10 pt-4">
               <p className="font-semibold text-cloud">{item.name}</p>
