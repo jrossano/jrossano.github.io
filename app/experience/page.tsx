@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { experience } from "@/content/site";
 import { roleHeading, roles } from "@/content/experience";
 
 export const metadata: Metadata = {
@@ -12,9 +11,9 @@ export default function ExperiencePage() {
     <div className="px-4 pb-20 pt-32 sm:px-6">
       <div className="mx-auto max-w-3xl">
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-sky">Experience</p>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-cloud md:text-5xl">Joe's Work Experience</h1>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight text-cloud md:text-5xl">Joe&apos;s Work Experience</h1>
         <p className="mt-4 text-sm leading-relaxed text-ash sm:text-base">
-          The details of Joe's work experience while working for JPMorganChase and E-gineering.
+          The details of Joe&apos;s work experience while working for JPMorganChase and E-gineering.
         </p>
       </div>
       <div className="mx-auto mt-2 grid max-w-4xl grid-cols-1">

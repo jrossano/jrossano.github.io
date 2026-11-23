@@ -14,7 +14,7 @@ export default function AppsPage() {
     <div className="px-4 pb-20 pt-32 sm:px-6">
       <div className="mx-auto max-w-3xl">
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-sky">Projects</p>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-cloud md:text-5xl">More of Joe's Projects</h1>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight text-cloud md:text-5xl">More of Joe&apos;s Projects</h1>
         <p className="mt-4 text-sm leading-relaxed text-ash sm:text-base">
           Some of the iOS apps Joe developed for JPMorganChase and for clients while working as a consultant with E-gineering.
         </p>

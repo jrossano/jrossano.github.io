@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Logo } from "@/components/logo";
 import { profile } from "@/content/site";
 
-const links = [
+const links: { href: string; label: string; page?: boolean }[] = [
   { href: "about", label: "About" },
   { href: "projects", label: "Projects" },
   { href: "testimonials", label: "Testimonials" },

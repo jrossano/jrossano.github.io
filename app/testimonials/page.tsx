@@ -11,7 +11,7 @@ export default function TestimonialsPage() {
     <div className="px-4 pb-20 pt-32 sm:px-6">
       <div className="mx-auto max-w-3xl">
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-sky">Testimonials</p>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-cloud md:text-5xl">More of Joe's Testimonials</h1>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight text-cloud md:text-5xl">More of Joe&apos;s Testimonials</h1>
         <p className="mt-4 text-sm leading-relaxed text-ash sm:text-base">
           Some of the testimonials Joe received while working for JPMorganChase and E-gineering.
         </p>
