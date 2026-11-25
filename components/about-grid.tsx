@@ -36,7 +36,7 @@ export function AboutGrid() {
         </article>
 
         <article className="panel p-6 md:col-span-3">
-          <p className="text-sm text-ash">Skills and core competencies</p>
+          {/* <p className="text-sm text-ash">Skills and technologies</p> */}
           <h3 className="mt-2 text-2xl font-bold text-cloud sm:text-3xl">My tech stack</h3>
           <TechStack />
         </article>
