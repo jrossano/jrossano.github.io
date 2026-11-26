@@ -24,10 +24,10 @@ export const screenshots: Record<string, Shot[]> = {
     { src: "/apps/compliance-testing/05.webp", alt: 'Compliance Testing screenshot 5', width: 450, height: 800 },
   ],
   "neuronode": [
-    { src: "/apps/neuronode/01.webp", alt: 'NeuroNode Controller screenshot 1', width: 450, height: 800 },
-    { src: "/apps/neuronode/02.webp", alt: 'NeuroNode Controller screenshot 2', width: 450, height: 800 },
-    { src: "/apps/neuronode/03.webp", alt: 'NeuroNode Controller screenshot 3', width: 450, height: 800 },
-    { src: "/apps/neuronode/04.webp", alt: 'NeuroNode Controller screenshot 4', width: 450, height: 800 },
+    { src: "/apps/neuronode/01.webp", alt: "Connect to NeuroNode splash with the device and Control Bionics mark", width: 1179, height: 2556 },
+    { src: "/apps/neuronode/02.webp", alt: "Live EMG graph with the signal, threshold, and signal-off lines", width: 1179, height: 2556 },
+    { src: "/apps/neuronode/03.webp", alt: "Graph Settings for the display and EMG switch thresholds", width: 1179, height: 2556 },
+    { src: "/apps/neuronode/04.webp", alt: "Menu with Graph Settings, About NeuroNode, Diagnostics, and Disconnect", width: 1179, height: 2556 },
     { src: "/apps/neuronode/05.webp", alt: 'NeuroNode Controller screenshot 5', width: 450, height: 800 },
   ],
   "dashboard": [
