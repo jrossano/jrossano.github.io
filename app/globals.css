@@ -43,8 +43,34 @@ body {
   background: #0a0f1f;
   color: #f4f7fc;
   font-family: var(--font-sans);
-  /* Lets the last nav target scroll up until its heading clears the bar. */
-  padding-bottom: calc(100svh - var(--nav-clearance) - var(--section-anchor-gap));
+}
+
+/* Distance from the Contact heading to the bottom of the footer. The spacer
+   below the footer is only the shortfall, so the heading can reach its line
+   and the page cannot scroll past it. An inline script replaces these with
+   the measured distance after layout. */
+:root {
+  --contact-tail: 33.125rem;
+}
+
+@media (min-width: 400px) {
+  :root {
+    --contact-tail: 31.875rem;
+  }
+}
+
+@media (min-width: 640px) {
+  :root {
+    --contact-tail: 27.625rem;
+  }
+}
+
+.contact-scroll-room {
+  height: 0;
+}
+
+body:has(#contact) .contact-scroll-room {
+  height: max(0px, calc(100svh - var(--nav-clearance) - var(--section-anchor-gap) - var(--contact-tail)));
 }
 
 ::selection {

@@ -40,6 +40,12 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <Nav />
         <main id="main">{children}</main>
         <Footer />
+        <div className="contact-scroll-room" aria-hidden="true" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){function fit(){var heading=document.getElementById("contact");var room=document.querySelector(".contact-scroll-room");if(!heading||!room)return;var tail=room.getBoundingClientRect().top-heading.getBoundingClientRect().top;document.documentElement.style.setProperty("--contact-tail",Math.ceil(tail)+"px");}fit();window.addEventListener("resize",fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);})();`,
+          }}
+        />
         {/* <AskLauncher /> */}
       </body>
     </html>

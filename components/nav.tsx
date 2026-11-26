@@ -1,5 +1,6 @@
 "use client";
 
+import type { MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/logo";
@@ -22,6 +23,16 @@ function isHome(pathname: string) {
   return pathname === "/" || pathname === "";
 }
 
+function scrollToTop(event: MouseEvent<HTMLAnchorElement>) {
+  if (!isHome(window.location.pathname)) return;
+  event.preventDefault();
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+  if (window.location.hash) {
+    window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+  }
+}
+
 export function Nav() {
   const pathname = usePathname() || "/";
   const home = isHome(pathname);
@@ -34,6 +45,7 @@ export function Nav() {
       >
         <Link
           href="/"
+          onClick={scrollToTop}
           className="flex shrink-0 items-center gap-2 rounded-full pr-1"
           aria-label={`${profile.name}, home`}
         >

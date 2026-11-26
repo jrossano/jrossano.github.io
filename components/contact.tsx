@@ -4,7 +4,7 @@ import { profile } from "@/content/site";
 export function Contact() {
   return (
     <section aria-labelledby="contact" className="px-4 py-20 sm:px-6">
-      <div className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl border border-cloud/10 bg-navy px-6 py-12 text-center sm:px-10">
+      <div className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl border border-cloud/10 bg-navy px-6 pb-12 pt-6 text-center sm:px-10">
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-40" />
         <div className="relative">
           <SectionHeading id="contact" accent="talk?">
