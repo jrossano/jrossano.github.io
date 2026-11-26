@@ -23,12 +23,28 @@
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
+  /* top-4 + nav border + py-2 + h-9 logo. sm matches header top-6. */
+  --nav-clearance: calc(1rem + 2px + 1rem + 2.25rem);
+  /* Projects heading-to-card gap, from the mt-10 under that heading. */
+  --section-anchor-gap: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  html {
+    --nav-clearance: calc(1.5rem + 2px + 1rem + 2.25rem);
+  }
+}
+
+.anchor-target {
+  scroll-margin-top: calc(var(--nav-clearance) + var(--section-anchor-gap));
 }
 
 body {
   background: #0a0f1f;
   color: #f4f7fc;
   font-family: var(--font-sans);
+  /* Lets the last nav target scroll up until its heading clears the bar. */
+  padding-bottom: calc(100svh - var(--nav-clearance) - var(--section-anchor-gap));
 }
 
 ::selection {

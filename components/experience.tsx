@@ -4,8 +4,8 @@ import { chapters, roleLine, rolesIn } from "@/content/experience";
 
 export function Experience() {
   return (
-    <section id="experience" aria-labelledby="experience-heading" className="scroll-mt-28 px-4 py-16 sm:px-6">
-      <SectionHeading id="experience-heading" accent="Joe's experience">
+    <section aria-labelledby="experience" className="px-4 py-16 sm:px-6">
+      <SectionHeading id="experience" accent="Joe's experience">
         Summary of
       </SectionHeading>
       {/* <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-ash sm:text-base">

@@ -8,8 +8,8 @@ const featured = apps.filter((app) => app.featured);
 
 export function Projects() {
   return (
-    <section id="projects" aria-labelledby="projects-heading" className="scroll-mt-28 px-4 py-16 sm:px-6">
-      <SectionHeading id="projects-heading" accent="Joe's projects">
+    <section aria-labelledby="projects" className="px-4 py-16 sm:px-6">
+      <SectionHeading id="projects" accent="Joe's projects">
         A small selection of
       </SectionHeading>
       {/* <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-ash sm:text-base">

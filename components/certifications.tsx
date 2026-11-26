@@ -3,8 +3,8 @@ import { SectionHeading } from "@/components/section-heading";
 
 export function Certifications() {
   return (
-    <section id="certifications" aria-labelledby="experience-heading" className="scroll-mt-28 px-4 py-16 sm:px-6">
-      <SectionHeading id="experience-heading" accent="Joe's certifications">
+    <section aria-labelledby="certifications" className="px-4 py-16 sm:px-6">
+      <SectionHeading id="certifications" accent="Joe's certifications">
         List of
       </SectionHeading>
       <div className="mx-auto mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-6xl">

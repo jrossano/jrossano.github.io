@@ -8,12 +8,12 @@ const architecture = competencies.find((item) => item.title === "Architecture & 
 
 export function AboutGrid() {
   return (
-    <section id="about" aria-labelledby="about-heading" className="scroll-mt-28 px-4 py-16 sm:px-6">
+    <section aria-labelledby="about-heading" className="px-4 py-16 sm:px-6">
       <h2 id="about-heading" className="sr-only">
         About {profile.name}
       </h2>
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-4 md:grid-cols-6">
-        <article className="panel group relative overflow-hidden p-6 md:col-span-4 md:p-8">
+        <article id="about" className="anchor-target panel group relative overflow-hidden p-6 md:col-span-4 md:p-8">
           <p className="text-sm text-ash">About Joe</p>
           <p className="mt-4 max-w-3xl text-sm leading-relaxed text-cloud sm:text-base">{profile.bio}</p>
           <p className="mt-6 max-w-xl text-2xl font-bold leading-snug text-cloud sm:text-3xl">
