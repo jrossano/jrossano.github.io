@@ -21,8 +21,8 @@ export default function HomePage() {
       <Testimonials />
       {/* <Experience /> */}
       <Certifications />
-      <section id="blog" aria-labelledby="blog-heading" className="scroll-mt-28 px-4 py-16 sm:px-6">
-        <SectionHeading id="blog-heading" accent="Joe's blog">
+      <section aria-labelledby="blog" className="px-4 py-16 sm:px-6">
+        <SectionHeading id="blog" accent="Joe's blog">
           Swift posts from
         </SectionHeading>
         <div className="mx-auto mt-6 max-w-6xl">

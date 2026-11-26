@@ -6,8 +6,8 @@ const featured = testimonials.filter((item) => item.featured);
 
 export function Testimonials() {
   return (
-    <section id="testimonials" aria-labelledby="testimonials-heading" className="scroll-mt-28 px-4 py-16 sm:px-6">
-      <SectionHeading id="testimonials-heading" accent="Joe's work">
+    <section aria-labelledby="testimonials" className="px-4 py-16 sm:px-6">
+      <SectionHeading id="testimonials" accent="Joe's work">
         What people say about
       </SectionHeading>
       <div className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-5">

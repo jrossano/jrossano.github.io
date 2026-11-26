@@ -3,11 +3,11 @@ import { profile } from "@/content/site";
 
 export function Contact() {
   return (
-    <section id="contact" aria-labelledby="contact-heading" className="scroll-mt-28 px-4 py-20 sm:px-6">
+    <section aria-labelledby="contact" className="px-4 py-20 sm:px-6">
       <div className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl border border-cloud/10 bg-navy px-6 py-12 text-center sm:px-10">
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-40" />
         <div className="relative">
-          <SectionHeading id="contact-heading" accent="talk?">
+          <SectionHeading id="contact" accent="talk?">
             Want to
           </SectionHeading>
           <p className="mx-auto mt-4 max-w-lg text-sm text-ash sm:text-base">
