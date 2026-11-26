@@ -3,18 +3,18 @@ export type Shot = { src: string; alt: string; width: number; height: number };
 
 export const screenshots: Record<string, Shot[]> = {
   "installment-loan": [
-    { src: "/apps/installment-loan/01.webp", alt: 'Installment Loan screenshot 1', width: 368, height: 800 },
-    { src: "/apps/installment-loan/02.webp", alt: 'Installment Loan screenshot 2', width: 368, height: 800 },
-    { src: "/apps/installment-loan/03.webp", alt: 'Installment Loan screenshot 3', width: 368, height: 800 },
-    { src: "/apps/installment-loan/04.webp", alt: 'Installment Loan screenshot 4', width: 368, height: 800 },
-    { src: "/apps/installment-loan/05.webp", alt: 'Installment Loan screenshot 5', width: 368, height: 800 },
+    { src: "/apps/installment-loan/payment-option.webp", alt: "Choose a 6-month or 12-month Chase Pay Monthly plan", width: 1206, height: 2622 },
+    { src: "/apps/installment-loan/autopay.webp", alt: "Set up automatic payments for Chase Pay Monthly", width: 1206, height: 2622 },
+    { src: "/apps/installment-loan/review.webp", alt: "Review a 12-month Chase Pay Monthly plan before confirming", width: 1206, height: 2622 },
+    { src: "/apps/installment-loan/details.webp", alt: "Chase Pay Monthly details with the balance due and payment schedule", width: 1206, height: 2622 },
+    { src: "/apps/installment-loan/activity.webp", alt: "Recent Chase Pay Monthly payments and account tools", width: 1206, height: 2622 },
   ],
   "pay-in-4": [
-    { src: "/apps/pay-in-4/01.webp", alt: 'Pay in 4 screenshot 1', width: 368, height: 800 },
-    { src: "/apps/pay-in-4/02.webp", alt: 'Pay in 4 screenshot 2', width: 368, height: 800 },
-    { src: "/apps/pay-in-4/03.webp", alt: 'Pay in 4 screenshot 3', width: 368, height: 800 },
-    { src: "/apps/pay-in-4/04.webp", alt: 'Pay in 4 screenshot 4', width: 368, height: 800 },
-    { src: "/apps/pay-in-4/05.webp", alt: 'Pay in 4 screenshot 5', width: 368, height: 800 },
+    { src: "/apps/pay-in-4/how-it-works.webp", alt: "How it works: split an eligible purchase into 4 interest-free payments", width: 1206, height: 2622 },
+    { src: "/apps/pay-in-4/setup.webp", alt: "Set up Pay in 4, step 1 of 3, with a four-payment schedule", width: 1206, height: 2622 },
+    { src: "/apps/pay-in-4/summary.webp", alt: "Pay in 4 summary showing available balance and active plans", width: 1206, height: 2622 },
+    { src: "/apps/pay-in-4/details.webp", alt: "Pay in 4 plan details with the payment schedule and recent activity", width: 1206, height: 2622 },
+    { src: "/apps/pay-in-4/eligible-purchases.webp", alt: "Eligible purchases that can be split into 4 payments", width: 1206, height: 2622 },
   ],
   "compliance-testing": [
     { src: "/apps/compliance-testing/01.webp", alt: 'Compliance Testing screenshot 1', width: 450, height: 800 },

@@ -22,7 +22,8 @@ export function Screenshots({ shots, label, size }: { shots: Shot[]; label: stri
             alt={shot.alt}
             width={shot.width}
             height={shot.height}
-            className={sizeClasses[size ?? "md"]}
+            style={{ aspectRatio: `${shot.width} / ${shot.height}` }}
+            className={`${sizeClasses[size ?? "md"]} object-contain`}
           />
         </li>
       ))}
