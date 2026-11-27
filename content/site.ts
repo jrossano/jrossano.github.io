@@ -222,7 +222,7 @@ export const apps: AppCase[] = [
   },
   {
     id: "neuronode",
-    name: "NeuroNode Controller",
+    name: "NeuroNode",
     featured: true,
     technologies: ["Core Bluetooth", "Bluetooth Low Energy", "Charts"],
     body: "This app was developed for an innovative medical technology company. The app facilitates the use of NeuroNode — the world's first wearable EMG assistive communications device — to operate iOS devices using bioelectrical signals. It uses Bluetooth Low Energy (BLE) and Apple's Core Bluetooth framework to help users personalize NeuroNode for use with Apple's assistive technology. Real-time graphing of EMG signals is accomplished using the Charts framework.",
