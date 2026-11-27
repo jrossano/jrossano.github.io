@@ -111,7 +111,7 @@ export const roles: Role[] = [
     employer: "E-gineering",
     location: "Indianapolis, IN",
     title: "Senior iOS Developer",
-    product: "NeuroNode Controller",
+    product: "NeuroNode",
     client: "Control Bionics, Inc",
     dates: "Mar 2017 – Aug 2017",
     summary:
@@ -475,7 +475,7 @@ export const chapters: Chapter[] = [
     location: "Indianapolis, IN",
     dates: "January 2012 – December 2022",
     intro:
-      "Client engagements at E-gineering, including NeuroNode Controller for Control Bionics (Mar 2017 – Aug 2017).",
+      "Client engagements at E-gineering, including NeuroNode for Control Bionics (Mar 2017 – Aug 2017).",
   },
   {
     id: "egineering-earlier",

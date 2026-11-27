@@ -135,7 +135,7 @@ export const knowledge: KnowledgeEntry[] = [
     id: "bluetooth",
     title: "Core Bluetooth",
     keywords: ["bluetooth", "ble", "core bluetooth", "corebluetooth"],
-    answer: `Core Bluetooth and Bluetooth Low Energy show up in four published case studies. NeuroNode Controller uses BLE and Core Bluetooth to personalize a wearable EMG device, with Charts for real-time EMG graphing. Compliance Testing uses BLE, RZBluetooth, and Nordic Semiconductor's CoreBluetoothMock for unit tests of proprietary medical devices. Puck uses BLE and Core Bluetooth to send IR commands to custom hardware. Filter Monitor uses BLE and Core Bluetooth to read real-time data from diesel filter sensors.`,
+    answer: `Core Bluetooth and Bluetooth Low Energy show up in four published case studies. NeuroNode uses BLE and Core Bluetooth to personalize a wearable EMG device, with Charts for real-time EMG graphing. Compliance Testing uses BLE, RZBluetooth, and Nordic Semiconductor's CoreBluetoothMock for unit tests of proprietary medical devices. Puck uses BLE and Core Bluetooth to send IR commands to custom hardware. Filter Monitor uses BLE and Core Bluetooth to read real-time data from diesel filter sensors.`,
   },
   {
     id: "tech-stack",
